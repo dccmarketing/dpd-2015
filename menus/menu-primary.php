@@ -8,7 +8,7 @@
  */
 
 ?><nav id="site-navigation" class="main-navigation" role="navigation">
-	<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'text-domain' ); ?></button><?php
+	<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'dpd-2015' ); ?></button><?php
 
 		$args['menu_id'] 		= 'primary-menu';
 		$args['theme_location'] = 'primary';

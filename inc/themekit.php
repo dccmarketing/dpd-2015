@@ -266,7 +266,7 @@ class function_names_Themekit {
 
 		$return .= '<a href="tel:' . $formatted . '">';
 		$return .= '<span class="screen-reader-text">';
-		$return .= esc_html__( 'Call ', 'text-domain' ) . '</span>';
+		$return .= esc_html__( 'Call ', 'dpd-2015' ) . '</span>';
 		$return .= $number . '</a>';
 
 		return $return;

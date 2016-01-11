@@ -32,7 +32,7 @@ do_action( 'tha_head_bottom' );
 
 do_action( 'tha_body_top' );
 
-	?><a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'text-domain' ); ?></a>
+	?><a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'dpd-2015' ); ?></a>
 	<div id="page" class="site"><?php
 
 	do_action( 'tha_header_before' );

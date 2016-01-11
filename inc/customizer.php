@@ -34,10 +34,10 @@ function function_names_register_panels( $wp_customize ) {
 	$wp_customize->add_panel( 'theme_options',
 		array(
 			'capability'  		=> 'edit_theme_options',
-			'description'  		=> esc_html__( 'Options for Replace With Theme Name', 'text-domain' ),
+			'description'  		=> esc_html__( 'Options for Replace With Theme Name', 'dpd-2015' ),
 			'priority'  		=> 10,
 			'theme_supports'  	=> '',
-			'title'  			=> esc_html__( 'Theme Options', 'text-domain' ),
+			'title'  			=> esc_html__( 'Theme Options', 'dpd-2015' ),
 		)
 	);
 
@@ -46,10 +46,10 @@ function function_names_register_panels( $wp_customize ) {
 	$wp_customize->add_panel( 'theme_options',
 		array(
 			'capability'  		=> 'edit_theme_options',
-			'description'  		=> esc_html__( 'Options for Replace With Theme Name', 'text-domain' ),
+			'description'  		=> esc_html__( 'Options for Replace With Theme Name', 'dpd-2015' ),
 			'priority'  		=> 10,
 			'theme_supports'  	=> '',
-			'title'  			=> esc_html__( 'Theme Options', 'text-domain' ),
+			'title'  			=> esc_html__( 'Theme Options', 'dpd-2015' ),
 		)
 	);
 	*/
@@ -86,10 +86,10 @@ function function_names_register_sections( $wp_customize ) {
 	$wp_customize->add_section( 'new_section',
 		array(
 			'capability' 	=> 'edit_theme_options',
-			'description' 	=> esc_html__( 'New Customizer Section', 'text-domain' ),
+			'description' 	=> esc_html__( 'New Customizer Section', 'dpd-2015' ),
 			'panel' 		=> 'theme_options',
 			'priority' 		=> 10,
-			'title' 		=> esc_html__( 'New Section', 'text-domain' )
+			'title' 		=> esc_html__( 'New Section', 'dpd-2015' )
 		)
 	);
 	*/
@@ -133,8 +133,8 @@ function function_names_register_fields( $wp_customize ) {
 	$wp_customize->add_control(
 		'tag_manager',
 		array(
-			'description' 	=> esc_html__( 'Paste in the Google Tag Manager code here.', 'text-domain' ),
-			'label' => esc_html__( 'Google Tag Manager', 'text-domain' ),
+			'description' 	=> esc_html__( 'Paste in the Google Tag Manager code here.', 'dpd-2015' ),
+			'label' => esc_html__( 'Google Tag Manager', 'dpd-2015' ),
 			'priority' => 90,
 			'section' => 'title_tagline',
 			'settings' => 'tag_manager',
@@ -160,8 +160,8 @@ function function_names_register_fields( $wp_customize ) {
 	$wp_customize->add_control(
 		'text_field',
 		array(
-			'description' 	=> esc_html__( '', 'text-domain' ),
-			'label'  	=> esc_html__( 'Text Field', 'text-domain' ),
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'label'  	=> esc_html__( 'Text Field', 'dpd-2015' ),
 			'priority' => 10,
 			'section'  	=> 'new_section',
 			'settings' 	=> 'text_field',
@@ -183,8 +183,8 @@ function function_names_register_fields( $wp_customize ) {
 	$wp_customize->add_control(
 		'url_field',
 		array(
-			'description' 	=> esc_html__( '', 'text-domain' ),
-			'label' => esc_html__( 'URL Field', 'text-domain' ),
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'label' => esc_html__( 'URL Field', 'dpd-2015' ),
 			'priority' => 10,
 			'section' => 'new_section',
 			'settings' => 'url_field',
@@ -206,8 +206,8 @@ function function_names_register_fields( $wp_customize ) {
 	$wp_customize->add_control(
 		'email_field',
 		array(
-			'description' 	=> esc_html__( '', 'text-domain' ),
-			'label' => esc_html__( 'Email Field', 'text-domain' ),
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'label' => esc_html__( 'Email Field', 'dpd-2015' ),
 			'priority' => 10,
 			'section' => 'new_section',
 			'settings' => 'email_field',
@@ -227,8 +227,8 @@ function function_names_register_fields( $wp_customize ) {
 	$wp_customize->add_control(
 		'date_field',
 		array(
-			'description' 	=> esc_html__( '', 'text-domain' ),
-			'label' => esc_html__( 'Date Field', 'text-domain' ),
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'label' => esc_html__( 'Date Field', 'dpd-2015' ),
 			'priority' => 10,
 			'section' => 'new_section',
 			'settings' => 'date_field',
@@ -249,8 +249,8 @@ function function_names_register_fields( $wp_customize ) {
 	$wp_customize->add_control(
 		'checkbox_field',
 		array(
-			'description' 	=> esc_html__( '', 'text-domain' ),
-			'label' => esc_html__( 'Checkbox Field', 'text-domain' ),
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'label' => esc_html__( 'Checkbox Field', 'dpd-2015' ),
 			'priority' => 10,
 			'section' => 'new_section',
 			'settings' => 'checkbox_field',
@@ -273,8 +273,8 @@ function function_names_register_fields( $wp_customize ) {
 	$wp_customize->add_control(
 		'password_field',
 		array(
-			'description' 	=> esc_html__( '', 'text-domain' ),
-			'label' => esc_html__( 'Password Field', 'text-domain' ),
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'label' => esc_html__( 'Password Field', 'dpd-2015' ),
 			'priority' => 10,
 			'section' => 'new_section',
 			'settings' => 'password_field',
@@ -297,12 +297,12 @@ function function_names_register_fields( $wp_customize ) {
 		'radio_field',
 		array(
 			'choices' => array(
-				'choice1' => esc_html__( 'Choice 1', 'text-domain' ),
-				'choice2' => esc_html__( 'Choice 2', 'text-domain' ),
-				'choice3' => esc_html__( 'Choice 3', 'text-domain' )
+				'choice1' => esc_html__( 'Choice 1', 'dpd-2015' ),
+				'choice2' => esc_html__( 'Choice 2', 'dpd-2015' ),
+				'choice3' => esc_html__( 'Choice 3', 'dpd-2015' )
 			),
-			'description' 	=> esc_html__( '', 'text-domain' ),
-			'label' => esc_html__( 'Radio Field', 'text-domain' ),
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'label' => esc_html__( 'Radio Field', 'dpd-2015' ),
 			'priority' => 10,
 			'section' => 'new_section',
 			'settings' => 'radio_field',
@@ -325,12 +325,12 @@ function function_names_register_fields( $wp_customize ) {
 		'select_field',
 		array(
 			'choices' => array(
-				'choice1' => esc_html__( 'Choice 1', 'text-domain' ),
-				'choice2' => esc_html__( 'Choice 2', 'text-domain' ),
-				'choice3' => esc_html__( 'Choice 3', 'text-domain' )
+				'choice1' => esc_html__( 'Choice 1', 'dpd-2015' ),
+				'choice2' => esc_html__( 'Choice 2', 'dpd-2015' ),
+				'choice3' => esc_html__( 'Choice 3', 'dpd-2015' )
 			),
-			'description' 	=> esc_html__( '', 'text-domain' ),
-			'label' => esc_html__( 'Select Field', 'text-domain' ),
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'label' => esc_html__( 'Select Field', 'dpd-2015' ),
 			'priority' => 10,
 			'section' => 'new_section',
 			'settings' => 'select_field',
@@ -352,8 +352,8 @@ function function_names_register_fields( $wp_customize ) {
 	$wp_customize->add_control(
 		'textarea_field',
 		array(
-			'description' 	=> esc_html__( '', 'text-domain' ),
-			'label' => esc_html__( 'Textarea Field', 'text-domain' ),
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'label' => esc_html__( 'Textarea Field', 'dpd-2015' ),
 			'priority' => 10,
 			'section' => 'new_section',
 			'settings' => 'textarea_field',
@@ -375,7 +375,7 @@ function function_names_register_fields( $wp_customize ) {
 	$wp_customize->add_control(
 		'range_field',
 		array(
-			'description' 	=> esc_html__( '', 'text-domain' ),
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
 			'input_attrs' => array(
 				'class' => 'range-field',
 				'max' => 100,
@@ -383,7 +383,7 @@ function function_names_register_fields( $wp_customize ) {
 				'step' => 1,
 				'style' => 'color: #020202'
 			),
-			'label' => esc_html__( 'Range Field', 'text-domain' ),
+			'label' => esc_html__( 'Range Field', 'dpd-2015' ),
 			'priority' => 10,
 			'section' => 'new_section',
 			'settings' => 'range_field',
@@ -405,8 +405,8 @@ function function_names_register_fields( $wp_customize ) {
 	$wp_customize->add_control(
 		'select_page_field',
 		array(
-			'description' 	=> esc_html__( '', 'text-domain' ),
-			'label' => esc_html__( 'Select Page', 'text-domain' ),
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'label' => esc_html__( 'Select Page', 'dpd-2015' ),
 			'priority' => 10,
 			'section' => 'new_section',
 			'settings' => 'select_page_field',
@@ -430,8 +430,8 @@ function function_names_register_fields( $wp_customize ) {
 			$wp_customize,
 			'color_field',
 			array(
-				'description' 	=> esc_html__( '', 'text-domain' ),
-				'label' => esc_html__( 'Color Field', 'text-domain' ),
+				'description' 	=> esc_html__( '', 'dpd-2015' ),
+				'label' => esc_html__( 'Color Field', 'dpd-2015' ),
 				'priority' => 10,
 				'section' => 'new_section',
 				'settings' => 'color_field'
@@ -449,8 +449,8 @@ function function_names_register_fields( $wp_customize ) {
 			$wp_customize,
 			'file_upload',
 			array(
-				'description' 	=> esc_html__( '', 'text-domain' ),
-				'label' => esc_html__( 'File Upload', 'text-domain' ),
+				'description' 	=> esc_html__( '', 'dpd-2015' ),
+				'label' => esc_html__( 'File Upload', 'dpd-2015' ),
 				'priority' => 10,
 				'section' => 'new_section',
 				'settings' => 'file_upload'
@@ -473,8 +473,8 @@ function function_names_register_fields( $wp_customize ) {
 			$wp_customize,
 			'image_upload',
 			array(
-				'description' 	=> esc_html__( '', 'text-domain' ),
-				'label' => esc_html__( 'Image Field', 'text-domain' ),
+				'description' 	=> esc_html__( '', 'dpd-2015' ),
+				'label' => esc_html__( 'Image Field', 'dpd-2015' ),
 				'priority' => 10,
 				'section' => 'new_section',
 				'settings' => 'image_upload'
@@ -500,8 +500,8 @@ function function_names_register_fields( $wp_customize ) {
 			$wp_customize,
 			'media_upload',
 			array(
-				'description' 	=> esc_html__( '', 'text-domain' ),
-				'label' => esc_html__( 'Media Field', 'text-domain' ),
+				'description' 	=> esc_html__( '', 'dpd-2015' ),
+				'label' => esc_html__( 'Media Field', 'dpd-2015' ),
 				'mime_type' => '',
 				'priority' => 10,
 				'section' => 'new_section',
@@ -527,7 +527,7 @@ function function_names_register_fields( $wp_customize ) {
 			$wp_customize,
 			'cropped_image',
 			array(
-				'description' 	=> esc_html__( '', 'text-domain' ),
+				'description' 	=> esc_html__( '', 'dpd-2015' ),
 				'flex_height' => '',
 				'flex_width' => '',
 				'height' => '1080',
