@@ -1,6 +1,6 @@
 <?php
 /**
- * Replace With Theme Name Customizer
+ * DPD 2015 Customizer
  *
  * Contains methods for customizing the theme customization screen.
  *
@@ -34,7 +34,7 @@ function dpd_2015_register_panels( $wp_customize ) {
 	$wp_customize->add_panel( 'theme_options',
 		array(
 			'capability'  		=> 'edit_theme_options',
-			'description'  		=> esc_html__( 'Options for Replace With Theme Name', 'dpd-2015' ),
+			'description'  		=> esc_html__( 'Options for DPD 2015', 'dpd-2015' ),
 			'priority'  		=> 10,
 			'theme_supports'  	=> '',
 			'title'  			=> esc_html__( 'Theme Options', 'dpd-2015' ),
@@ -46,7 +46,7 @@ function dpd_2015_register_panels( $wp_customize ) {
 	$wp_customize->add_panel( 'theme_options',
 		array(
 			'capability'  		=> 'edit_theme_options',
-			'description'  		=> esc_html__( 'Options for Replace With Theme Name', 'dpd-2015' ),
+			'description'  		=> esc_html__( 'Options for DPD 2015', 'dpd-2015' ),
 			'priority'  		=> 10,
 			'theme_supports'  	=> '',
 			'title'  			=> esc_html__( 'Theme Options', 'dpd-2015' ),
