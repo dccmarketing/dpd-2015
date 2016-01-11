@@ -84,7 +84,7 @@ class dpd_2015_Actions_and_Filters {
 
 		wp_enqueue_style( 'dashicons' );
 		wp_enqueue_script( 'dpd-2015-search', get_template_directory_uri() . '/js/hidden-search.min.js', array(), '20150807', true );
-		// wp_enqueue_style( 'dpd-2015-fonts', $this->fonts_url(), array(), null );
+		wp_enqueue_style( 'dpd-2015-fonts', $this->fonts_url(), array(), null );
 
 	} // more_scripts_and_styles()
 
@@ -317,7 +317,7 @@ class dpd_2015_Actions_and_Filters {
 
 		$return 	= '';
 		$families 	= '';
-		$fonts[] 	= array( 'font' => 'Oxygen', 'weights' => '400,700', 'translate' => esc_html_x( 'on', 'Oxygen font: on or off', 'dpd-2015' ) );
+		$fonts[] 	= array( 'font' => 'Lato', 'weights' => '400,700,300,700italic,900italic', 'translate' => esc_html_x( 'on', 'Lato font: on or off', 'dpd-2015' ) );
 
 		foreach ( $fonts as $font ) {
 
@@ -330,7 +330,7 @@ class dpd_2015_Actions_and_Filters {
 		if ( ! empty( $families ) ) {
 
 			$query_args['family'] 	= urlencode( implode( '|', $families ) );
-			$query_args['subset'] 	= urlencode( 'latin,latin-ext' );
+			$query_args['subset'] 	= urlencode( 'latin' );
 			$return 				= add_query_arg( $query_args, '//fonts.googleapis.com/css' );
 
 		}
