@@ -1,6 +1,6 @@
 === DPD 2015 ===
 Contributors: automattic, Chris Wilcoxson
-Tags: featured-images, translation-ready, custom-background, theme-options, custom-menu, post-formats, threaded-comments
+Tags: featured-images, translation-ready, theme-options, custom-menu, customizer
 Requires at least: 4.0
 Tested up to: 4.4.1
 Stable tag: 1.0.0
