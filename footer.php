@@ -28,7 +28,7 @@
 		?><div class="wrap wrap-footer">
 			<div class="site-info">
 				<div class="copyright">&copy <?php echo date( 'Y' ); ?> <a href="<?php echo esc_url( get_admin_url(), 'dpd-2015' ); ?>"><?php echo get_bloginfo( 'name' ); ?></a></div>
-				<div class="credits"><?php printf( esc_html__( 'Site created by %1$s', 'dpd-2015' ), '<a href="https://dccmarketing.com/" target="_blank">DCC Marketing</a>' ); ?></div>
+				<div class="credits"><?php printf( esc_html__( 'Site created by %1$s', 'dpd-2015' ), '<a href="https://dccmarketing.com/" rel="nofollow" target="_blank">DCC Marketing</a>' ); ?></div>
 			</div><!-- .site-info -->
 		</div><!-- .wrap-footer --><?php
 

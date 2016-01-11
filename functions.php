@@ -44,7 +44,9 @@ function dpd_2015_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary', 'dpd-2015' )
+		'primary' => esc_html__( 'Primary', 'dpd-2015' ),
+		'top-header' => esc_html__( 'Top Header', 'dpd-2015' ),
+		'social' => esc_html__( 'Social', 'dpd-2015' )
 	) );
 
 	/*
@@ -58,24 +60,6 @@ function dpd_2015_setup() {
 		'gallery',
 		'caption',
 	) );
-
-	/*
-	 * Enable support for Post Formats.
-	 * See https://developer.wordpress.org/themes/functionality/post-formats/
-	 */
-	/*add_theme_support( 'post-formats', array(
-		'aside',
-		'image',
-		'video',
-		'quote',
-		'link',
-	) );*/
-
-	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'dpd_2015_custom_background_args', array(
-		'default-color' => 'ffffff',
-		'default-image' => '',
-	) ) );
 
 } // dpd_2015_setup()
 endif; // dpd_2015_setup
@@ -128,11 +112,6 @@ function dpd_2015_scripts() {
 
 } // dpd_2015_scripts()
 add_action( 'wp_enqueue_scripts', 'dpd_2015_scripts' );
-
-/**
- * Implement the Custom Header feature.
- */
-//require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
