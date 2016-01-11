@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package DocBlock
+ * @package DPD_2015
  */
 
 do_action( 'tha_html_before' );

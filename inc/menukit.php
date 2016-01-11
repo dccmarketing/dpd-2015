@@ -3,7 +3,7 @@
 /**
  * A class of helpful menu-related functions
  *
- * @package DocBlock
+ * @package DPD_2015
  * @author Slushman <chris@slushman.com>
  */
 class dpd_2015_Menukit {

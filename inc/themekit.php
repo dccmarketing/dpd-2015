@@ -3,7 +3,7 @@
 /**
  * A class of helpful theme functions
  *
- * @package DocBlock
+ * @package DPD_2015
  * @author Slushman <chris@slushman.com>
  */
 class dpd_2015_Themekit {

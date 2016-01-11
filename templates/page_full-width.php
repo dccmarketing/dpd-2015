@@ -4,7 +4,7 @@
  *
  * Description: A full-width template with no sidebar
  *
- * @package DocBlock
+ * @package DPD_2015
  */
 
 get_header();

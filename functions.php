@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Functions_File_Explained
  *
- * @package DocBlock
+ * @package DPD_2015
  */
 
 if ( ! function_exists( 'dpd_2015_setup' ) ) :
