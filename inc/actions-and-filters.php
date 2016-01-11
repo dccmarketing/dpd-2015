@@ -6,7 +6,7 @@
  * @package DocBlock
  * @author Slushman <chris@slushman.com>
  */
-class function_names_Actions_and_Filters {
+class dpd_2015_Actions_and_Filters {
 
 	/**
 	 * Constructor
@@ -37,7 +37,7 @@ class function_names_Actions_and_Filters {
 		add_filter( 'excerpt_length', array( $this, 'excerpt_length' ) );
 		add_filter( 'excerpt_more', array( $this, 'excerpt_read_more' ) );
 		add_filter( 'mce_buttons_2', array( $this, 'add_editor_buttons' ) );
-		add_action( 'function_names_breadcrumbs', array( $this, 'breadcrumbs' ) );
+		add_action( 'dpd_2015_breadcrumbs', array( $this, 'breadcrumbs' ) );
 		add_filter( 'wpseo_breadcrumb_single_link', array( $this, 'unlink_private_pages' ), 10, 2 );
 		add_filter( 'wp_seo_get_bc_title', array( $this, 'remove_private' ) );
 		add_action( 'tha_body_top', array( $this, 'add_hidden_search' ) );
@@ -535,4 +535,4 @@ class function_names_Actions_and_Filters {
 /**
  * Make an instance so its ready to be used
  */
-$function_names_actions_and_filters = new function_names_Actions_and_Filters();
+$dpd_2015_actions_and_filters = new dpd_2015_Actions_and_Filters();

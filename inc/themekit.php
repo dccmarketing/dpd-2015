@@ -6,7 +6,7 @@
  * @package DocBlock
  * @author Slushman <chris@slushman.com>
  */
-class function_names_Themekit {
+class dpd_2015_Themekit {
 
 	/**
 	 * Constructor
@@ -339,7 +339,7 @@ class function_names_Themekit {
 /**
  * Make an instance so its ready to be used
  */
-$function_names_themekit = new function_names_Themekit();
+$dpd_2015_themekit = new dpd_2015_Themekit();
 
 /**
  * Prints whatever in a nice, readable format

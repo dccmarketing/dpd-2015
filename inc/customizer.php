@@ -10,15 +10,15 @@
  */
 
 // Register panels, sections, and controls
-add_action( 'customize_register', 'function_names_register_panels' );
-add_action( 'customize_register', 'function_names_register_sections' );
-add_action( 'customize_register', 'function_names_register_fields' );
+add_action( 'customize_register', 'dpd_2015_register_panels' );
+add_action( 'customize_register', 'dpd_2015_register_sections' );
+add_action( 'customize_register', 'dpd_2015_register_fields' );
 
 // Output custom CSS to live site
-add_action( 'wp_head', 'function_names_header_output' );
+add_action( 'wp_head', 'dpd_2015_header_output' );
 
 // Enqueue live preview javascript in Theme Customizer admin screen
-add_action( 'customize_preview_init', 'function_names_live_preview' );
+add_action( 'customize_preview_init', 'dpd_2015_live_preview' );
 
 /**
  * Registers custom panels for the Customizer
@@ -28,7 +28,7 @@ add_action( 'customize_preview_init', 'function_names_live_preview' );
  * @link 		http://ottopress.com/2012/how-to-leverage-the-theme-customizer-in-your-own-themes/
  * @since 		1.0.0
  */
-function function_names_register_panels( $wp_customize ) {
+function dpd_2015_register_panels( $wp_customize ) {
 
 	// Theme Options Panel
 	$wp_customize->add_panel( 'theme_options',
@@ -54,7 +54,7 @@ function function_names_register_panels( $wp_customize ) {
 	);
 	*/
 
-} // function_names_register_panels()
+} // dpd_2015_register_panels()
 
 /**
  * Registers custom sections for the Customizer
@@ -77,7 +77,7 @@ function function_names_register_panels( $wp_customize ) {
  * @link 		http://ottopress.com/2012/how-to-leverage-the-theme-customizer-in-your-own-themes/
  * @since 		1.0.0
  */
-function function_names_register_sections( $wp_customize ) {
+function dpd_2015_register_sections( $wp_customize ) {
 
 
 
@@ -94,7 +94,7 @@ function function_names_register_sections( $wp_customize ) {
 	);
 	*/
 
-} // function_names_register_sections()
+} // dpd_2015_register_sections()
 
 /**
  * Registers controls/fields for the Customizer
@@ -111,7 +111,7 @@ function function_names_register_sections( $wp_customize ) {
  * @link 		http://ottopress.com/2012/how-to-leverage-the-theme-customizer-in-your-own-themes/
  * @since 		1.0.0
  */
-function function_names_register_fields( $wp_customize ) {
+function dpd_2015_register_fields( $wp_customize ) {
 
 	// Enable live preview JS for default fields
 	$wp_customize->get_setting( 'blogname' )->transport 		= 'postMessage';
@@ -541,7 +541,7 @@ function function_names_register_fields( $wp_customize ) {
 	$wp_customize->get_setting( 'cropped_image' )->transport = 'postMessage';
 	*/
 
-} // function_names_register_fields()
+} // dpd_2015_register_fields()
 
 /**
  * This will generate a line of CSS for use in header output. If the setting
@@ -557,7 +557,7 @@ function function_names_register_fields( $wp_customize ) {
  * @param 		bool 		$echo 			Optional. Whether to print directly to the page (default: true).
  * @return 		string 						Returns a single line of CSS with selectors and a property.
  */
-function function_names_generate_css( $selector, $style, $mod_name, $prefix = '', $postfix = '', $echo = true ) {
+function dpd_2015_generate_css( $selector, $style, $mod_name, $prefix = '', $postfix = '', $echo = true ) {
 
 	$return = '';
 	$mod 	= get_theme_mod( $mod_name );
@@ -580,7 +580,7 @@ function function_names_generate_css( $selector, $style, $mod_name, $prefix = ''
 
 	return $return;
 
-} // function_names_generate_css()
+} // dpd_2015_generate_css()
 
 /**
  * This will output the custom WordPress settings to the live theme's WP head.
@@ -591,21 +591,21 @@ function function_names_generate_css( $selector, $style, $mod_name, $prefix = ''
  * @see 		add_action( 'wp_head', $func )
  * @since 		1.0.0
  */
-function function_names_header_output() {
+function dpd_2015_header_output() {
 
 	?><!-- Customizer CSS -->
 	<style type="text/css"><?php
 
 		// pattern:
-		// function_names_generate_css( 'selector', 'style', 'mod_name', 'prefix', 'postfix', true );
+		// dpd_2015_generate_css( 'selector', 'style', 'mod_name', 'prefix', 'postfix', true );
 		//
 		// background-image example:
-		// function_names_generate_css( '.class', 'background-image', 'background_image_example', 'url(', ')' );
+		// dpd_2015_generate_css( '.class', 'background-image', 'background_image_example', 'url(', ')' );
 
 
 	?></style><!-- Customizer CSS --><?php
 
-} // function_names_header_output()
+} // dpd_2015_header_output()
 
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
@@ -616,8 +616,8 @@ function function_names_header_output() {
  * @see 		add_action( 'customize_preview_init', $func )
  * @since 		1.0.0
  */
-function function_names_live_preview() {
+function dpd_2015_live_preview() {
 
-	wp_enqueue_script( 'function_names_customizer', get_template_directory_uri() . '/js/customizer.min.js', array( 'jquery', 'customize-preview' ), '', true );
+	wp_enqueue_script( 'dpd_2015_customizer', get_template_directory_uri() . '/js/customizer.min.js', array( 'jquery', 'customize-preview' ), '', true );
 
-} // function_names_live_preview()
+} // dpd_2015_live_preview()

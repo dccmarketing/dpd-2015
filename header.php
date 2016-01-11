@@ -84,7 +84,7 @@ do_action( 'tha_body_top' );
 			<div class="breadcrumbs">
 				<div class="wrap-crumbs"><?php
 
-					do_action( 'function_names_breadcrumbs' );
+					do_action( 'dpd_2015_breadcrumbs' );
 
 				?></div><!-- .wrap-crumbs -->
 			</div><!-- .breadcrumbs -->

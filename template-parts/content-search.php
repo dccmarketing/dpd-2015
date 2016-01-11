@@ -18,7 +18,7 @@
 		if ( 'post' == get_post_type() ) :
 			?><div class="entry-meta"><?php
 
-				function_names_posted_on();
+				dpd_2015_posted_on();
 
 			?></div><!-- .entry-meta --><?php
 
@@ -38,7 +38,7 @@
 
 	?><footer class="entry-footer"><?php
 
-		function_names_entry_footer();
+		dpd_2015_entry_footer();
 
 	?></footer><!-- .entry-footer --><?php
 
