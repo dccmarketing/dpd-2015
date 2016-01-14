@@ -1,11 +1,15 @@
 .site-header {
 	// DO NOT ADD PADDING HERE! - it screws up menus
-	margin-bottom	: $size__default-bot-marg;
 	overflow 		: auto;
 	padding-top 	: $size__site-links-btn;
 
 	@media only screen and (min-width: $bp__menu-button+1) {
-		overflow 	: visible;
+		margin-bottom	: 0.75em;
+		overflow 		: visible;
+	}
+
+	@media only screen and (min-width: $bp__top-header) {
+		padding-top: $size__site-links-bar;
 	}
 }
 
@@ -14,10 +18,12 @@
 }
 
 .site-title {
-	text-align: center;
+	margin 		: 0;
+	text-align 	: center;
 
 	a {
 		color 			: $color__text-site-title;
+		display 		: block;
 		text-decoration : none;
 	}
 }
@@ -26,46 +32,15 @@
 	text-align: center;
 }
 
-.header-top {
-	background-color: $green;
-	color 			: $light;
-	position 		: absolute;
-	transform 		: translateY( calc( -100% + #{$size__site-links-btn} ) );
-	transition 		: all $trans__default;
-	width 			: 100%;
-	z-index 		: 9999;
-
-	&.toggled {
-		transform: translateY(0);
-	}
+.wrap-header {
 
 	@media only screen and (min-width: $bp__top-header) {
-		position 	: fixed;
-		transform 	: translateY(0);
-	}
+		align-items : flex-end;
+		display 	: flex;
 
-	a {
-		@include unline( $light );
-	}
-
-	.wrap {
-		padding 		: 0;
-
-		@media only screen and (min-width: $bp__top-header) {
-			display 		: flex;
-			justify-content : space-between;
-		}
-	}
-
-	.topmenu-toggle {
-		@extend %buttonreset;
-		background-color: $green;
-		color 			: $light;
-		padding 		: 0.75em;
-		width 			: 100%;
-
-		@media only screen and (min-width: $bp__top-header) {
-			display: none;
+		div,
+		form {
+			width: 33%;
 		}
 	}
 }

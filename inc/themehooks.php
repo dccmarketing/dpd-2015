@@ -33,7 +33,8 @@ class dpd_2015_Themehooks {
 		add_action( 'dpd_2015_header_content', array( $this, 'header_site_branding' ), 10 );
 		add_action( 'dpd_2015_header_content', array( $this, 'header_search' ), 15 );
 		add_action( 'dpd_2015_header_content', array( $this, 'header_email_subscription' ), 20 );
-		add_action( 'dpd_2015_header_content', array( $this, 'menu_primary' ), 25 );
+
+		add_action( 'tha_header_bottom', array( $this, 'menu_primary' ), 10 );
 
 		add_action( 'tha_body_top', array( $this, 'analytics_code' ) );
 		add_action( 'tha_body_top', array( $this, 'add_hidden_search' ) );
@@ -154,7 +155,11 @@ class dpd_2015_Themehooks {
 	 */
 	public function header_email_subscription() {
 
-		//
+		?><div class="email-form"><?php
+
+		do_shortcode( '[constantcontactapi]' );
+
+		?></div><?php
 
 	} // header_email_subscription()
 
@@ -231,14 +236,14 @@ class dpd_2015_Themehooks {
 
 			$menu['container'] 			= 'div';
 			$menu['container_id'] 		= 'menu-homepage-buttons';
-			$menu['container_class'] 	= 'menu homepage-buttons';
+			$menu['container_class'] 	= 'menu homepage-buttons wrap';
 			$menu['depth'] 				= 1;
 			$menu['fallback_cb'] 		= '';
 			$menu['menu_id'] 			= 'menu-homepage-buttons-items';
 			$menu['menu_class'] 		= 'menu-items';
-			$args['theme_location'] 	= 'homepage-buttons';
+			$menu['theme_location'] 	= 'homepage-buttons';
 
-			wp_nav_menu( $args );
+			wp_nav_menu( $menu );
 
 		?></nav><!-- homepage-buttons-menu --><?php
 

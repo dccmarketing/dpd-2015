@@ -2,6 +2,7 @@
 	clear			: both;
 	display			: block;
 	float			: left;
+	text-transform 	: uppercase;
 	width			: 100%;
 
 	ul {
@@ -10,8 +11,10 @@
 		text-align 	: left;
 
 		@media only screen and (min-width: $bp__menu-button+1) {
-			display 	: block;
-			text-align	: center;
+			//display 		: block;
+			//text-align 		: center;
+			display 		: flex;
+			justify-content : center;
 		}
 
 		ul {
@@ -23,7 +26,7 @@
 				left 		: 0;
 				opacity 	: 0;
 				position	: absolute;
-				transition 	: visibility 0s ease 0.5s,opacity 0.5s ease;
+				transition 	: visibility 0s ease 0.25s,opacity 0.25s ease;
 				visibility 	: hidden;
 				z-index		: 99999;
 			} // breakpoint
@@ -64,13 +67,32 @@
 				}
 
 			}
+
+			> li {
+				&.menu-item-has-children {
+					> a {
+						&:after {
+							@media only screen and (min-width: $bp__menu-button+1) {
+								content 	: "\f345";
+								display		: inline-block;
+								float 		: right;
+								font-family : dashicons;
+							}
+						}
+					}
+				}
+
+			}
+
 		} // .submenu ul
+
 	} // first-level ul
 
 	li {
 
 		@media only screen and (min-width: $bp__menu-button+1) {
-			display 	: inline-block;
+			//display 	: inline-block;
+			flex-grow 	: 1;
 			position 	: relative;
 		}
 
@@ -93,14 +115,13 @@
 					color: $color__text-menu-hover;
 				}
 			}
-
 		}
 	}
 
 	a {
 		color 			: $color__text-menu-mobile;
 		display			: block;
-		padding 		: 0.5em 1em;
+		padding 		: 0.25em 2em;
 		text-decoration	: none;
 
 		@media only screen and (min-width: $bp__menu-button+1) {
@@ -140,12 +161,12 @@
 			@extend %menutoggle;
 		}
 
-		.menu-main-menu-container {
+		/* .menu-main-menu-container {
 			@media only screen and (min-width: $bp__tablet) and (max-width: $bp__laptop) {
 				transform: translateX(0);
 			}
 
-		}
+		} */
 
 		.menu-toggle {
 			right: $size__menu_width;
@@ -156,11 +177,38 @@
 // Center Menu
 .menu-main-menu-container {
 	margin		: 0 auto;
+	max-width 	: $size__max-width;
+
+	> ul {
+		> li {
+
+			> a {
+				text-align: center;
+			}
+
+			&:not(:last-child) {
+
+				> a {
+					border-right: 1px solid;
+				}
+			}
+
+			/* Removes padding to make these menu items as close to the edge as possible
+
+			&:first-child a {
+				padding-left: 0;
+			}
+
+			&:last-child a {
+				padding-right: 0;
+			} */
+		}
+	}
 
 	/**
 	 * Tablet menu - slide in from left - on top or pushing content
 	 */
-	@media only screen and (min-width: $bp__tablet) and (max-width: $bp__laptop) {
+	/* @media only screen and (min-width: $bp__tablet) and (max-width: $bp__laptop) {
 		background-color: $dark;
 		bottom 			: 0;
 		height 			: 100%;
@@ -180,7 +228,7 @@
 				padding-top: $size__wp-admin-bar-2;
 			}
 		}
-	}
+	} */
 }
 
 
@@ -188,14 +236,14 @@
 .menu-toggle {
 	@extend %menutoggle;
 
-	@media only screen and (min-width: $bp__tablet) and (max-width: $bp__laptop) {
+	/* @media only screen and (min-width: $bp__tablet) and (max-width: $bp__laptop) {
 		background-color: $color__bg-menu-button;
 		color 			: $color__text-menu-button;
 		position 		: absolute;
 		right 			: 0;
 		width 			: 200px;
 		z-index 		: 99;
-	}
+	} */
 
 	@media only screen and (min-width: $bp__menu-button+1) {
 		display 		: none;

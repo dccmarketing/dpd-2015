@@ -1,0 +1,43 @@
+.header-top {
+	background-color: $green;
+	color 			: $light;
+	position 		: absolute;
+	transform 		: translateY( calc( -100% + #{$size__site-links-btn} ) );
+	transition 		: all $trans__default;
+	width 			: 100%;
+	z-index 		: 9999;
+
+	&.toggled {
+		transform: translateY(0);
+	}
+
+	@media only screen and (min-width: $bp__top-header) {
+		position 	: fixed;
+		transform 	: translateY(0);
+	}
+
+	a {
+		@include unline( $light );
+	}
+
+	.wrap {
+		padding 		: 0;
+
+		@media only screen and (min-width: $bp__top-header) {
+			display 		: flex;
+			justify-content : space-between;
+		}
+	}
+
+	.topmenu-toggle {
+		@extend %buttonreset;
+		background-color: $green;
+		color 			: $light;
+		padding 		: 0.75em;
+		width 			: 100%;
+
+		@media only screen and (min-width: $bp__top-header) {
+			display: none;
+		}
+	}
+}

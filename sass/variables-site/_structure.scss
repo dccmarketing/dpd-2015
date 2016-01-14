@@ -6,7 +6,9 @@ $size__max-width 		: 1000px;
 
 $size__menu_width 		: 300px;
 $size__hidden-search 	: 180px;
+
 $size__site-links-btn	: 40px;
+$size__site-links-bar	: 48px;
 
 $size__wp-admin-bar-1 	: 46px;
 $size__wp-admin-bar-2 	: 32px;
@@ -23,7 +25,8 @@ $size__login-logo-height: 84px;
 /**
  * Breakpoints
  */
-$bp__menu-button		: 600px; // 37.5em
+$bp__home-buttons 		: 550px;
+$bp__menu-button		: 700px; // 37.5em
 $bp__headings1 			: 700px; // 43.75em
 $bp__tablet				: 768px; // 48em
 $bp__admin-bar-1		: 783px;

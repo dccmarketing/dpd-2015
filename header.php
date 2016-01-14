@@ -77,7 +77,6 @@ do_action( 'tha_body_top' );
 				 * @hooked 		header_site_branding 		10
 				 * @hooked 		header_search 				15
 				 * @hooked 		header_email_subscription 	20
-				 * @hooked 		menu_primary 				25
 				 */
 				do_action( 'dpd_2015_header_content' );
 
@@ -85,6 +84,8 @@ do_action( 'tha_body_top' );
 
 			/**
 			 * The tha_header_bottom action hook
+			 *
+			 * @hooked 		menu_primary 				10
 			 */
 			do_action( 'tha_header_bottom' );
 
