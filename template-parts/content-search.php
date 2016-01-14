@@ -9,6 +9,9 @@
 
 ?><article id="post-<?php the_ID(); ?>" <?php post_class(); ?>><?php
 
+	/**
+	 * The tha_entry_top action hook
+	 */
 	do_action( 'tha_entry_top' );
 
 	?><header class="page-header contentsearch"><?php
@@ -26,6 +29,9 @@
 
 	?></header><!-- .entry-header --><?php
 
+	/**
+	 * The tha_entry_content_before action hook
+	 */
 	do_action( 'tha_entry_content_before' );
 
 	?><div class="entry-summary"><?php
@@ -34,6 +40,9 @@
 
 	?></div><!-- .entry-summary --><?php
 
+	/**
+	 * The tha_entry_content_after action hook
+	 */
 	do_action( 'tha_entry_content_after' );
 
 	?><footer class="entry-footer"><?php
@@ -42,6 +51,9 @@
 
 	?></footer><!-- .entry-footer --><?php
 
+	/**
+	 * The tha_entry_bottom action hook
+	 */
 	do_action( 'tha_entry_bottom' );
 
 ?></article><!-- #post-## -->

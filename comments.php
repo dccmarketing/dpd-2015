@@ -15,10 +15,11 @@
  * the visitor has not yet entered the password we will
  * return early without loading the comments.
  */
-if ( post_password_required() ) {
-	return;
-}
+if ( post_password_required() ) { return; }
 
+/**
+ * The tha_comments_before action hook
+ */
 do_action( 'tha_comments_before' );
 
 ?><div id="comments" class="comments-area"><?php
@@ -83,4 +84,7 @@ do_action( 'tha_comments_before' );
 
 ?></div><!-- #comments --><?php
 
+/**
+ * The tha_comments_after action hook
+ */
 do_action( 'tha_comments_after' );

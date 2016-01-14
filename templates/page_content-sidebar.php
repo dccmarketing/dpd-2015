@@ -12,23 +12,32 @@ get_header();
 	?><div id="primary" class="content-area content-sidebar">
 		<main id="main" class="site-main" role="main"><?php
 
+			/**
+			 * The tha_content_while_before action hook
+			 */
 			do_action( 'tha_content_while_before' );
 
 			while ( have_posts() ) : the_post();
 
+				/**
+				 * The tha_entry_before action hook
+				 */
 				do_action( 'tha_entry_before' );
 
 				get_template_part( 'template-parts/content', 'page' );
 
+				/**
+				 * The tha_entry_after action hook
+				 *
+				 * @hooked 		comments_section 		10
+				 */
 				do_action( 'tha_entry_after' );
-
-					// If comments are open or have more than one comment, load comment template
-					if ( comments_open() || '0' != get_comments_number() ) :
-						comments_template();
-					endif;
 
 			endwhile; // loop
 
+			/**
+			 * The tha_content_while_after action hook
+			 */
 			do_action( 'tha_content_while_after' );
 
 		?></main><!-- #main -->

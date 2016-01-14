@@ -1,4 +1,6 @@
 .nav-social {
+	background-color: $med;
+	text-align 		: center;
 
 	.screen-reader-text,
 	a {
@@ -16,8 +18,10 @@
 		position 	: relative;
 
 		svg {
-			height 	: $font__size-social;
-			width 	: $font__size-social;
+			fill 		: $light;
+			height 		: $font__size-social;
+			margin-top 	: 5px;
+			width 		: $font__size-social;
 		}
 	}
 }

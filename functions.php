@@ -46,7 +46,9 @@ function dpd_2015_setup() {
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary', 'dpd-2015' ),
 		'top-header' => esc_html__( 'Top Header', 'dpd-2015' ),
-		'social' => esc_html__( 'Social', 'dpd-2015' )
+		'social' => esc_html__( 'Social', 'dpd-2015' ),
+		'quick-links' => esc_html__( 'Quick Links', 'dpd-2015' ),
+		'homepage-buttons' => esc_html__( 'Homepage Buttons', 'dpd-2015' )
 	) );
 
 	/*
@@ -137,6 +139,11 @@ require get_template_directory() . '/inc/themekit.php';
  * Load Actions and Filters
  */
 require get_template_directory() . '/inc/actions-and-filters.php';
+
+/**
+ * Load Themehooks
+ */
+require get_template_directory() . '/inc/themehooks.php';
 
 /**
  * Load Slushman Menukit

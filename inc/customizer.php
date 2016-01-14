@@ -79,6 +79,16 @@ function dpd_2015_register_panels( $wp_customize ) {
  */
 function dpd_2015_register_sections( $wp_customize ) {
 
+	// Images Section
+	$wp_customize->add_section( 'images_section',
+		array(
+			'capability' 	=> 'edit_theme_options',
+			'description' 	=> esc_html__( 'Images for DPD 2015', 'dpd-2015' ),
+			'panel' 		=> 'theme_options',
+			'priority' 		=> 10,
+			'title' 		=> esc_html__( 'Images', 'dpd-2015' )
+		)
+	);
 
 
 	/*
@@ -142,6 +152,110 @@ function dpd_2015_register_fields( $wp_customize ) {
 		)
 	);
 	$wp_customize->get_setting( 'tag_manager' )->transport = 'postMessage';
+
+
+
+	// Site Images Fields
+
+	// Site Logo Field
+	// Returns the image ID, not a URL
+	$wp_customize->add_setting(
+		'site_logo',
+		array(
+			'default' => '',
+			'transport' => 'postMessage'
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Media_Control(
+			$wp_customize,
+			'site_logo',
+			array(
+				'description' 	=> esc_html__( '', 'dpd-2015' ),
+				'label' => esc_html__( 'Site logo', 'dpd-2015' ),
+				'mime_type' => '',
+				'priority' => 10,
+				'section' => 'images_section',
+				'settings' => 'site_logo'
+			)
+		)
+	);
+	$wp_customize->get_setting( 'site_logo' )->transport = 'postMessage';
+
+	// Site Featured Image Field
+	// Returns the image ID, not a URL
+	$wp_customize->add_setting(
+		'site_feat_image',
+		array(
+			'default' => '',
+			'transport' => 'postMessage'
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Media_Control(
+			$wp_customize,
+			'site_feat_image',
+			array(
+				'description' 	=> esc_html__( '', 'dpd-2015' ),
+				'label' => esc_html__( 'Site featured image', 'dpd-2015' ),
+				'mime_type' => '',
+				'priority' => 10,
+				'section' => 'images_section',
+				'settings' => 'site_feat_image'
+			)
+		)
+	);
+	$wp_customize->get_setting( 'site_feat_image' )->transport = 'postMessage';
+
+	// Site BG Image Field
+	// Returns the image ID, not a URL
+	$wp_customize->add_setting(
+		'site_bg_image',
+		array(
+			'default' => '',
+			'transport' => 'postMessage'
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Media_Control(
+			$wp_customize,
+			'site_bg_image',
+			array(
+				'description' 	=> esc_html__( '', 'dpd-2015' ),
+				'label' => esc_html__( 'Site background image', 'dpd-2015' ),
+				'mime_type' => '',
+				'priority' => 10,
+				'section' => 'images_section',
+				'settings' => 'site_bg_image'
+			)
+		)
+	);
+	$wp_customize->get_setting( 'site_bg_image' )->transport = 'postMessage';
+
+	// Footer Logo Field
+	// Returns the image ID, not a URL
+	$wp_customize->add_setting(
+		'footer_logo',
+		array(
+			'default' => '',
+			'transport' => 'postMessage'
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Media_Control(
+			$wp_customize,
+			'footer_logo',
+			array(
+				'description' 	=> esc_html__( '', 'dpd-2015' ),
+				'label' => esc_html__( 'Footer logo', 'dpd-2015' ),
+				'mime_type' => '',
+				'priority' => 10,
+				'section' => 'images_section',
+				'settings' => 'footer_logo'
+			)
+		)
+	);
+	$wp_customize->get_setting( 'footer_logo' )->transport = 'postMessage';
 
 
 

@@ -22,11 +22,17 @@ get_header(); ?>
 				?></h1>
 			</header><!-- .page-header --><?php
 
+			/**
+			 * The tha_content_while_before action hook
+			 */
 			do_action( 'tha_content_while_before' );
 
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();
 
+				/**
+				 * The tha_entry_before action hook
+				 */
 				do_action( 'tha_entry_before' );
 
 				/**
@@ -36,17 +42,37 @@ get_header(); ?>
 				 */
 				get_template_part( 'template-parts/content', 'search' );
 
+				/**
+				 * The tha_entry_after action hook
+				 *
+				 * @hooked 		comments_section 		10
+				 */
 				do_action( 'tha_entry_after' );
 
 			endwhile;
 
+			/**
+			 * The tha_content_while_after action hook
+			 */
 			do_action( 'tha_content_while_after' );
 
 			the_posts_navigation();
 
 		else :
 
+			/**
+			 * The tha_entry_before action hook
+			 */
+			do_action( 'tha_entry_before' );
+
 			get_template_part( 'template-parts/content', 'none' );
+
+			/**
+			 * The tha_entry_after action hook
+			 *
+			 * @hooked 		comments_section 		10
+			 */
+			do_action( 'tha_entry_after' );
 
 		endif;
 

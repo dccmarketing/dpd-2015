@@ -29,7 +29,6 @@ class dpd_2015_Actions_and_Filters {
 		add_action( 'wp_enqueue_scripts', array( $this, 'more_scripts_and_styles' ) );
 		add_action( 'login_enqueue_scripts', array( $this, 'login_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts_and_styles' ) );
-		add_action( 'tha_body_top', array( $this, 'analytics_code' ) );
 		add_filter( 'post_mime_types', array( $this, 'add_mime_types' ) );
 		add_filter( 'upload_mimes', array( $this, 'custom_upload_mimes' ) );
 		add_filter( 'body_class', array( $this, 'page_body_classes' ) );
@@ -37,12 +36,8 @@ class dpd_2015_Actions_and_Filters {
 		add_filter( 'excerpt_length', array( $this, 'excerpt_length' ) );
 		add_filter( 'excerpt_more', array( $this, 'excerpt_read_more' ) );
 		add_filter( 'mce_buttons_2', array( $this, 'add_editor_buttons' ) );
-		add_action( 'dpd_2015_breadcrumbs', array( $this, 'breadcrumbs' ) );
 		add_filter( 'wpseo_breadcrumb_single_link', array( $this, 'unlink_private_pages' ), 10, 2 );
 		add_filter( 'wp_seo_get_bc_title', array( $this, 'remove_private' ) );
-		add_action( 'tha_body_top', array( $this, 'add_hidden_search' ) );
-		add_action( 'tha_header_after', array( $this, 'add_precontent' ) );
-		add_action( 'tha_content_after', array( $this, 'add_postcontent' ) );
 		add_filter( 'manage_page_posts_columns', array( $this, 'page_template_column_head' ), 10 );
 		add_action( 'manage_page_posts_custom_column', array( $this, 'page_template_column_content' ), 10, 2 );
 		add_filter( 'get_search_form', array( $this, 'make_search_button_a_button' ) );
@@ -84,6 +79,7 @@ class dpd_2015_Actions_and_Filters {
 
 		wp_enqueue_style( 'dashicons' );
 		wp_enqueue_script( 'dpd-2015-search', get_template_directory_uri() . '/js/hidden-search.min.js', array(), '20150807', true );
+		wp_enqueue_script( 'dpd-2015-topmenu', get_template_directory_uri() . '/js/hidden-topmenu.min.js', array(), '20160113', true );
 		wp_enqueue_style( 'dpd-2015-fonts', $this->fonts_url(), array(), null );
 
 	} // more_scripts_and_styles()
@@ -116,23 +112,6 @@ class dpd_2015_Actions_and_Filters {
 	} // add_editor_buttons()
 
 	/**
-	 * Adds a hidden search field
-	 *
-	 * @return 		mixed 			The HTML markup for a search field
-	 */
-	public function add_hidden_search() {
-
-		?><div aria-hidden="true" class="hidden-search-top" id="hidden-search-top">
-			<div class="wrap"><?php
-
-			get_search_form();
-
-			?></div>
-		</div><?php
-
-	} // add_hidden_search()
-
-	/**
 	 * Adds PDF as a filter for the Media Library
 	 *
 	 * @param 	array 		$post_mime_types 		The current MIME types
@@ -146,40 +125,6 @@ class dpd_2015_Actions_and_Filters {
 	    return $post_mime_types;
 
 	} // add_mime_types
-
-	/**
-	 * Inserts content after the main content and before the footer.
-	 */
-	public function add_postcontent() {
-
-		//
-
-	} // add_postcontent()
-
-	/**
-	 * Inserts content after the header and before the main content.
-	 */
-	public function add_precontent() {
-
-		//
-
-	} // add_precontent()
-
-	/**
-	 * Inserts Google Tag manager code after body tag
-	 * @return 	mixed 		The inserted Google Tag Manager code
-	 */
-	public function analytics_code() {
-
-		$tag = get_theme_mod( 'tag_manager' );
-
-		if ( ! empty( $tag ) ) {
-
-			echo $tag;
-
-		}
-
-	} // analytics_code()
 
 	/**
 	 * Creates a style tag in the header with the background image
@@ -208,36 +153,6 @@ class dpd_2015_Actions_and_Filters {
 		echo $output;
 
 	} // background_images()
-
-	/**
-	 * Returns the appropriate breadcrumbs.
-	 *
-	 * @return 		mixed 				WooCommerce breadcrumbs, then Yoast breadcrumbs
-	 */
-	public function breadcrumbs() {
-
-		$crumbs = '';
-
-		if ( function_exists( 'woocommerce_breadcrumb' ) ) {
-
-			$args['after'] 			= '</span>';
-			$args['before'] 		= '<span rel="v:child" typeof="v:Breadcrumb">';
-			$args['delimiter'] 		= '&nbsp;>&nbsp;';
-			$args['home'] 			= esc_html_x( 'Home', 'breadcrumb', 'dpd-2015' );
-			$args['wrap_after'] 	= '</span></span></nav>';
-			$args['wrap_before'] 	= '<nav class="woocommerce-breadcrumb" ' . ( is_single() ? 'itemprop="breadcrumb"' : '' ) . '><span xmlns:v="http://rdf.data-vocabulary.org/#"><span typeof="v:Breadcrumb">';
-
-			$crumbs = woocommerce_breadcrumb( $args );
-
-		} elseif( function_exists( 'yoast_breadcrumb' ) ) {
-
-			$crumbs = yoast_breadcrumb();
-
-		}
-
-		return $crumbs;
-
-	} // breadcrumbs()
 
 	/**
 	 * Adds support for additional MIME types to WordPress

@@ -11,37 +11,59 @@
 
 		?></div><!-- .wrap --><?php
 
+		/**
+		 * The tha_content_bottom action hook
+		 *
+		 * @hooked 		site_info_and_copyright 		10
+		 * @hooked 		menu_quick_links 				15
+		 */
 		do_action( 'tha_content_bottom' );
 
 	?></div><!-- #content --><?php
 
+	/**
+	 * The tha_content_after action hook
+	 */
 	do_action( 'tha_content_after' );
 
-	do_action( 'after_content' );
-
+	/**
+	 * The tha_footer_before action hook
+	 */
 	do_action( 'tha_footer_before' );
 
 	?><footer id="colophon" class="site-footer" role="contentinfo"><?php
 
+		/**
+		 * The tha_footer_top action hook
+		 */
 		do_action( 'tha_footer_top' );
 
-		?><div class="wrap wrap-footer">
-			<div class="site-info">
-				<div class="copyright">&copy <?php echo date( 'Y' ); ?> <a href="<?php echo esc_url( get_admin_url(), 'dpd-2015' ); ?>"><?php echo get_bloginfo( 'name' ); ?></a></div>
-				<div class="credits"><?php printf( esc_html__( 'Site created by %1$s', 'dpd-2015' ), '<a href="https://dccmarketing.com/" rel="nofollow" target="_blank">DCC Marketing</a>' ); ?></div>
-			</div><!-- .site-info -->
-		</div><!-- .wrap-footer --><?php
+		?><div class="wrap wrap-footer"><?php
 
+			/**
+			 * The dpd_2015_footer_content action hook
+			 */
+			do_action( 'dpd_2015_footer_content' );
+
+		/**
+		 * The tha_footer_bottom action hook
+		 */
 		do_action( 'tha_footer_bottom' );
 
 	?></footer><!-- #colophon --><?php
 
+	/**
+	 * The tha_footer_after action hook
+	 */
 	do_action( 'tha_footer_after' );
 
 ?></div><!-- #page --><?php
 
 wp_footer();
 
+/**
+ * The tha_body_bottom action hook
+ */
 do_action( 'tha_body_bottom' );
 
 ?></body>
