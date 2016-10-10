@@ -14,16 +14,10 @@ get_header(); ?>
 
 		if ( have_posts() ) :
 
-			?><header class="page-header">
-				<h1 class="page-title"><?php
-
-					printf( esc_html__( 'Search Results for: %s', 'dpd-2015' ), '<span>' . get_search_query() . '</span>' );
-
-				?></h1>
-			</header><!-- .page-header --><?php
-
 			/**
 			 * The tha_content_while_before action hook
+			 *
+			 * @hooked 			search_page_title
 			 */
 			do_action( 'tha_content_while_before' );
 
@@ -44,8 +38,6 @@ get_header(); ?>
 
 				/**
 				 * The tha_entry_after action hook
-				 *
-				 * @hooked 		comments_section 		10
 				 */
 				do_action( 'tha_entry_after' );
 
@@ -55,8 +47,6 @@ get_header(); ?>
 			 * The tha_content_while_after action hook
 			 */
 			do_action( 'tha_content_while_after' );
-
-			the_posts_navigation();
 
 		else :
 
@@ -69,8 +59,6 @@ get_header(); ?>
 
 			/**
 			 * The tha_entry_after action hook
-			 *
-			 * @hooked 		comments_section 		10
 			 */
 			do_action( 'tha_entry_after' );
 
@@ -79,5 +67,4 @@ get_header(); ?>
 		?></main><!-- #main -->
 	</section><!-- #primary --><?php
 
-get_sidebar();
 get_footer();

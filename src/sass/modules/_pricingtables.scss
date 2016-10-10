@@ -1,0 +1,131 @@
+.rpt_style_basic {
+
+	.rpt_subtitle {
+		color: inherit !important;
+	}
+
+	.rpt_plan {
+
+		.rpt_title {
+			background 	: inherit !important;
+			border 		: none !important;
+			color 		: inherit !important;
+			font-size 	: inherit !important;
+			font-weight : 700;
+
+			img {
+				margin-right 	: 10px;
+				position 		: relative;
+				vertical-align	: middle;
+			}
+		} // title
+
+		.rpt_head {
+			background 	: inherit !important;
+			border 		: none !important;
+
+			.rpt_price {
+				color 			: inherit !important;
+				font-size 		: inherit !important;
+				line-height 	: inherit !important;
+				padding 		: inherit !important;
+				text-align 		: inherit !important;
+				text-shadow 	: inherit !important;
+
+				.rpt_currency {
+					font-size 	: inherit !important;
+					line-height : inherit !important;
+					position 	: inherit !important;
+				}
+
+			}
+
+		} // head
+
+		.rpt_foot {
+			background: inherit !important;
+		} // foot
+
+		img {
+ 			border 		: none;
+ 			box-shadow 	: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+ 			display 	: inline;
+ 			margin 		: 0px 10px 0 0;
+ 			padding 	: 0;
+
+ 			&.rpt_recommended {
+ 				float: right;
+ 			}
+		}
+
+	} // plan
+
+	.rpt_recommended_plan {
+		position 	: relative;
+		top 		: -10px;
+	}
+
+} // basic
+
+.rpt_5_plans {
+
+	.rpt_plan {
+		width: 19.5%;
+		float: left;
+	}
+
+	.rpt_plan_0 {
+		margin-right: 0.62%;
+	}
+
+	.rpt_plan_2,
+	.rpt_plan_3,
+	.rpt_plan_4 {
+		margin-left: 0.62%;
+	}
+
+}
+
+.rpt_4_plans {
+	.rpt_plan {
+		width: 24.5%;
+		float: left;
+	}
+
+	.rpt_plan_0 {
+		margin-right: 0.66%;
+	}
+
+	.rpt_plan_2,
+	.rpt_plan_3 {
+		margin-left: 0.66%;
+	}
+}
+
+.rpt_3_plans {
+	.rpt_plan {
+		width: 32%;
+		float: left;
+	}
+
+	.rpt_plan_0 {
+		margin-right: 1.9%;
+	}
+
+	.rpt_plan_2 {
+		margin-left: 1.9%;
+	}
+}
+
+
+.rpt_2_plans {
+	.rpt_plan {
+		width: 49%;
+		float: left;
+	}
+
+	.rpt_plan_0 {
+		margin-right: 2%;
+	}
+
+}

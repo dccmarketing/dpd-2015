@@ -9,48 +9,45 @@
  * @package DPD_2015
  */
 
-		?></div><!-- .wrap --><?php
-
-		/**
-		 * The tha_content_bottom action hook
-		 *
-		 * @hooked 		site_info_and_copyright 		10
-		 * @hooked 		menu_quick_links 				15
-		 */
-		do_action( 'tha_content_bottom' );
-
-	?></div><!-- #content --><?php
-
-	/**
-	 * The tha_content_after action hook
-	 */
-	do_action( 'tha_content_after' );
-
-	/**
-	 * The tha_footer_before action hook
-	 */
-	do_action( 'tha_footer_before' );
-
-	?><footer id="colophon" class="site-footer" role="contentinfo"><?php
-
-		/**
-		 * The tha_footer_top action hook
-		 */
-		do_action( 'tha_footer_top' );
-
-		?><div class="wrap wrap-footer"><?php
+			/**
+			 * The tha_content_bottom action hook
+			 */
+			do_action( 'tha_content_bottom' );
 
 			/**
-			 * The dpd_2015_footer_content action hook
+			 * The tha_footer_before action hook
 			 */
-			do_action( 'dpd_2015_footer_content' );
+			do_action( 'tha_footer_before' );
+
+			?><footer id="colophon" class="site-footer" role="contentinfo"><?php
+
+				/**
+				 * The tha_footer_top action hook
+				 */
+				do_action( 'tha_footer_top' );
+
+				?><div class="wrap wrap-footer"><?php
+
+					/**
+					 * The dpd_2015_footer_content action hook
+					 */
+					do_action( 'dpd_2015_footer_content' );
+
+				?></div><!-- .wrap-footer --><?php
+
+				/**
+				 * The tha_footer_bottom action hook
+				 */
+				do_action( 'tha_footer_bottom' );
+
+			?></footer><!-- #colophon --><?php
 
 		/**
-		 * The tha_footer_bottom action hook
+		 * The tha_content_after action hook
 		 */
-		do_action( 'tha_footer_bottom' );
+		do_action( 'tha_content_after' );
 
-	?></footer><!-- #colophon --><?php
+	?></div><!-- #content --><?php
 
 	/**
 	 * The tha_footer_after action hook

@@ -41,6 +41,17 @@ function dpd_2015_register_panels( $wp_customize ) {
 		)
 	);
 
+	// Programs Menu Panel
+	/*$wp_customize->add_panel( 'programs_menu',
+		array(
+			'capability'  		=> 'edit_theme_options',
+			'description'  		=> esc_html__( 'Links to the subsites', 'dpd-2015' ),
+			'priority'  		=> 10,
+			'theme_supports'  	=> '',
+			'title'  			=> esc_html__( 'Programs Menu', 'dpd-2015' ),
+		)
+	);*/
+
 	/*
 	// Theme Options Panel
 	$wp_customize->add_panel( 'theme_options',
@@ -89,6 +100,49 @@ function dpd_2015_register_sections( $wp_customize ) {
 			'title' 		=> esc_html__( 'Images', 'dpd-2015' )
 		)
 	);
+
+	// Home Section
+	$wp_customize->add_section( 'home_section',
+		array(
+			'capability' 	=> 'edit_theme_options',
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'panel' 		=> 'theme_options',
+			'priority' 		=> 10,
+			'title' 		=> esc_html__( 'Home Page', 'dpd-2015' )
+		)
+	);
+
+	// Contact Info Section
+	$wp_customize->add_section( 'contact_info',
+		array(
+			'capability' 	=> 'edit_theme_options',
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'panel' 		=> 'theme_options',
+			'priority' 		=> 10,
+			'title' 		=> esc_html__( 'Contact Info', 'dpd-2015' )
+		)
+	);
+
+
+
+	/*$menus = dpd_2015_programs_menu();
+
+	foreach ( $menus as $menu ) {
+
+		$title = str_replace( '_', ' ', $menu );
+
+		// Contact Info Section
+		$wp_customize->add_section( $menu,
+			array(
+				'capability' 	=> 'edit_theme_options',
+				'description' 	=> esc_html__( '', 'dpd-2015' ),
+				'panel' 		=> 'programs_menu',
+				'priority' 		=> 10,
+				'title' 		=> esc_html__( ucwords( $title ), 'dpd-2015' )
+			)
+		);
+
+	} // foreach*/
 
 
 	/*
@@ -143,7 +197,7 @@ function dpd_2015_register_fields( $wp_customize ) {
 	$wp_customize->add_control(
 		'tag_manager',
 		array(
-			'description' 	=> esc_html__( 'Paste in the Google Tag Manager code here.', 'dpd-2015' ),
+			'description' 	=> esc_html__( 'Paste in the Google Tag Manager code here. Do not include the comment tags!', 'dpd-2015' ),
 			'label' => esc_html__( 'Google Tag Manager', 'dpd-2015' ),
 			'priority' => 90,
 			'section' => 'title_tagline',
@@ -171,7 +225,7 @@ function dpd_2015_register_fields( $wp_customize ) {
 			$wp_customize,
 			'site_logo',
 			array(
-				'description' 	=> esc_html__( '', 'dpd-2015' ),
+				'description' 	=> esc_html__( 'Maximum size is 238px by 106px.', 'dpd-2015' ),
 				'label' => esc_html__( 'Site logo', 'dpd-2015' ),
 				'mime_type' => '',
 				'priority' => 10,
@@ -196,7 +250,7 @@ function dpd_2015_register_fields( $wp_customize ) {
 			$wp_customize,
 			'site_feat_image',
 			array(
-				'description' 	=> esc_html__( '', 'dpd-2015' ),
+				'description' 	=> esc_html__( 'Minimum size is 1200px by 200px. It can be taller, but you will only see the center 200px of the image.', 'dpd-2015' ),
 				'label' => esc_html__( 'Site featured image', 'dpd-2015' ),
 				'mime_type' => '',
 				'priority' => 10,
@@ -221,7 +275,7 @@ function dpd_2015_register_fields( $wp_customize ) {
 			$wp_customize,
 			'site_bg_image',
 			array(
-				'description' 	=> esc_html__( '', 'dpd-2015' ),
+				'description' 	=> esc_html__( 'Minimum size is 1500px by 1100 px. Taller is better.', 'dpd-2015' ),
 				'label' => esc_html__( 'Site background image', 'dpd-2015' ),
 				'mime_type' => '',
 				'priority' => 10,
@@ -246,7 +300,7 @@ function dpd_2015_register_fields( $wp_customize ) {
 			$wp_customize,
 			'footer_logo',
 			array(
-				'description' 	=> esc_html__( '', 'dpd-2015' ),
+				'description' 	=> esc_html__( 'Maximum size is 300px by 300px.', 'dpd-2015' ),
 				'label' => esc_html__( 'Footer logo', 'dpd-2015' ),
 				'mime_type' => '',
 				'priority' => 10,
@@ -256,6 +310,551 @@ function dpd_2015_register_fields( $wp_customize ) {
 		)
 	);
 	$wp_customize->get_setting( 'footer_logo' )->transport = 'postMessage';
+
+
+
+
+
+	// Email Subscription Label Field
+	$wp_customize->add_setting(
+		'email_subscription_label',
+		array(
+			'default'  	=> '',
+			'transport' => 'postMessage'
+		)
+	);
+	$wp_customize->add_control(
+		'email_subscription_label',
+		array(
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'label'  	=> esc_html__( 'Email Subscription Label', 'dpd-2015' ),
+			'priority' => 10,
+			'section'  	=> 'home_section',
+			'settings' 	=> 'email_subscription_label',
+			'type' 		=> 'text'
+		)
+	);
+	$wp_customize->get_setting( 'email_subscription_label' )->transport = 'postMessage';
+
+
+
+	// Events Heading Field
+	$wp_customize->add_setting(
+		'events_heading',
+		array(
+			'default'  	=> 'Event Calendar',
+			'transport' => 'postMessage'
+		)
+	);
+	$wp_customize->add_control(
+		'events_heading',
+		array(
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'label'  	=> esc_html__( 'Events Heading', 'dpd-2015' ),
+			'priority' => 10,
+			'section'  	=> 'home_section',
+			'settings' 	=> 'events_heading',
+			'type' 		=> 'text'
+		)
+	);
+	$wp_customize->get_setting( 'events_heading' )->transport = 'postMessage';
+
+
+
+	// No Events Message Field
+	$wp_customize->add_setting(
+		'no_events_message',
+		array(
+			'default'  	=> 'There are no upcoming events.',
+			'transport' => 'postMessage'
+		)
+	);
+	$wp_customize->add_control(
+		'no_events_message',
+		array(
+			'description' 	=> esc_html__( 'This message displays on the homepage if there are no events on the calendar.', 'dpd-2015' ),
+			'label'  	=> esc_html__( 'No Events Message', 'dpd-2015' ),
+			'priority' => 10,
+			'section'  	=> 'home_section',
+			'settings' 	=> 'no_events_message',
+			'type' 		=> 'text'
+		)
+	);
+	$wp_customize->get_setting( 'no_events_message' )->transport = 'postMessage';
+
+	// Events Link Text Field
+	$wp_customize->add_setting(
+		'events_link_text',
+		array(
+			'default'  	=> 'View All Events',
+			'transport' => 'postMessage'
+		)
+	);
+	$wp_customize->add_control(
+		'events_link_text',
+		array(
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'label'  	=> esc_html__( 'Events Link Text', 'dpd-2015' ),
+			'priority' => 10,
+			'section'  	=> 'home_section',
+			'settings' 	=> 'events_link_text',
+			'type' 		=> 'text'
+		)
+	);
+	$wp_customize->get_setting( 'events_link_text' )->transport = 'postMessage';
+
+
+
+	// News Heading Field
+	$wp_customize->add_setting(
+		'news_heading',
+		array(
+			'default'  	=> 'News',
+			'transport' => 'postMessage'
+		)
+	);
+	$wp_customize->add_control(
+		'news_heading',
+		array(
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'label'  	=> esc_html__( 'News Heading', 'dpd-2015' ),
+			'priority' => 10,
+			'section'  	=> 'home_section',
+			'settings' 	=> 'news_heading',
+			'type' 		=> 'text'
+		)
+	);
+	$wp_customize->get_setting( 'news_heading' )->transport = 'postMessage';
+
+
+
+	// No News Message Field
+	$wp_customize->add_setting(
+		'no_news_message',
+		array(
+			'default'  	=> 'There is no news at this time.',
+			'transport' => 'postMessage'
+		)
+	);
+	$wp_customize->add_control(
+		'no_news_message',
+		array(
+			'description' 	=> esc_html__( 'This message displays on the homepage if there are no news posts.', 'dpd-2015' ),
+			'label'  	=> esc_html__( 'No News Message', 'dpd-2015' ),
+			'priority' => 10,
+			'section'  	=> 'home_section',
+			'settings' 	=> 'no_news_message',
+			'type' 		=> 'text'
+		)
+	);
+	$wp_customize->get_setting( 'no_news_message' )->transport = 'postMessage';
+
+
+
+	// News Link Text Field
+	$wp_customize->add_setting(
+		'news_link_text',
+		array(
+			'default'  	=> 'View All News',
+			'transport' => 'postMessage'
+		)
+	);
+	$wp_customize->add_control(
+		'news_link_text',
+		array(
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'label'  	=> esc_html__( 'News Link Text', 'dpd-2015' ),
+			'priority' => 10,
+			'section'  	=> 'home_section',
+			'settings' 	=> 'news_link_text',
+			'type' 		=> 'text'
+		)
+	);
+	$wp_customize->get_setting( 'news_link_text' )->transport = 'postMessage';
+
+
+
+	// Quick Links Heading Field
+	$wp_customize->add_setting(
+		'quick_links_heading',
+		array(
+			'default'  	=> 'Quick Links',
+			'transport' => 'postMessage'
+		)
+	);
+	$wp_customize->add_control(
+		'quick_links_heading',
+		array(
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'label'  	=> esc_html__( 'Quick Links Heading', 'dpd-2015' ),
+			'priority' => 10,
+			'section'  	=> 'home_section',
+			'settings' 	=> 'quick_links_heading',
+			'type' 		=> 'text'
+		)
+	);
+	$wp_customize->get_setting( 'quick_links_heading' )->transport = 'postMessage';
+
+	// Footer Page Select Field
+	// Returns a page ID
+	$wp_customize->add_setting(
+		'footer_page_link',
+		array(
+			'default'  	=> '',
+			'transport' => 'postMessage'
+		)
+	);
+	$wp_customize->add_control(
+		'footer_page_link',
+		array(
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'label' => esc_html__( 'Footer Link', 'dpd-2015' ),
+			'priority' => 10,
+			'section' => 'home_section',
+			'settings' => 'footer_page_link',
+			'type' => 'dropdown-pages'
+		)
+	);
+	$wp_customize->get_setting( 'footer_page_link' )->transport = 'postMessage';
+
+	// Footer Link Text Field
+	$wp_customize->add_setting(
+		'footer_link_text',
+		array(
+			'default'  	=> '',
+			'transport' => 'postMessage'
+		)
+	);
+	$wp_customize->add_control(
+		'footer_link_text',
+		array(
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'label'  	=> esc_html__( 'Footer Link Text', 'dpd-2015' ),
+			'priority' => 10,
+			'section'  	=> 'home_section',
+			'settings' 	=> 'footer_link_text',
+			'type' 		=> 'text'
+		)
+	);
+	$wp_customize->get_setting( 'footer_link_text' )->transport = 'postMessage';
+
+
+
+
+	// Contact Info Section Fields
+
+	// Address 1 Field
+	$wp_customize->add_setting(
+		'address_1',
+		array(
+			'default'  	=> '',
+			'transport' => 'postMessage'
+		)
+	);
+	$wp_customize->add_control(
+		'address_1',
+		array(
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'label'  	=> esc_html__( 'Address Line 1', 'dpd-2015' ),
+			'priority' => 200,
+			'section'  	=> 'contact_info',
+			'settings' 	=> 'address_1',
+			'type' 		=> 'text'
+		)
+	);
+	$wp_customize->get_setting( 'address_1' )->transport = 'postMessage';
+
+	// City Field
+	$wp_customize->add_setting(
+		'city',
+		array(
+			'default'  	=> '',
+			'transport' => 'postMessage'
+		)
+	);
+	$wp_customize->add_control(
+		'city',
+		array(
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'label'  	=> esc_html__( 'City', 'dpd-2015' ),
+			'priority' => 220,
+			'section'  	=> 'contact_info',
+			'settings' 	=> 'city',
+			'type' 		=> 'text'
+		)
+	);
+	$wp_customize->get_setting( 'city' )->transport = 'postMessage';
+
+	// US States Select Field
+	$wp_customize->add_setting(
+		'us_state',
+		array(
+			'default'  	=> 'IL',
+			'transport' => 'postMessage'
+		)
+	);
+	$wp_customize->add_control(
+		'us_state',
+		array(
+			'choices' => array(
+				'AL' => esc_html__( 'Alabama', 'dpd-2015' ),
+				'AK' => esc_html__( 'Alaska', 'dpd-2015' ),
+				'AZ' => esc_html__( 'Arizona', 'dpd-2015' ),
+				'AR' => esc_html__( 'Arkansas', 'dpd-2015' ),
+				'CA' => esc_html__( 'California', 'dpd-2015' ),
+				'CO' => esc_html__( 'Colorado', 'dpd-2015' ),
+				'CT' => esc_html__( 'Connecticut', 'dpd-2015' ),
+				'DE' => esc_html__( 'Delaware', 'dpd-2015' ),
+				'DC' => esc_html__( 'District of Columbia', 'dpd-2015' ),
+				'FL' => esc_html__( 'Florida', 'dpd-2015' ),
+				'GA' => esc_html__( 'Georgia', 'dpd-2015' ),
+				'HI' => esc_html__( 'Hawaii', 'dpd-2015' ),
+				'ID' => esc_html__( 'Idaho', 'dpd-2015' ),
+				'IL' => esc_html__( 'Illinois', 'dpd-2015' ),
+				'IN' => esc_html__( 'Indiana', 'dpd-2015' ),
+				'IA' => esc_html__( 'Iowa', 'dpd-2015' ),
+				'KS' => esc_html__( 'Kansas', 'dpd-2015' ),
+				'KY' => esc_html__( 'Kentucky', 'dpd-2015' ),
+				'LA' => esc_html__( 'Louisiana', 'dpd-2015' ),
+				'ME' => esc_html__( 'Maine', 'dpd-2015' ),
+				'MD' => esc_html__( 'Maryland', 'dpd-2015' ),
+				'MA' => esc_html__( 'Massachusetts', 'dpd-2015' ),
+				'MI' => esc_html__( 'Michigan', 'dpd-2015' ),
+				'MN' => esc_html__( 'Minnesota', 'dpd-2015' ),
+				'MS' => esc_html__( 'Mississippi', 'dpd-2015' ),
+				'MO' => esc_html__( 'Missouri', 'dpd-2015' ),
+				'MT' => esc_html__( 'Montana', 'dpd-2015' ),
+				'NE' => esc_html__( 'Nebraska', 'dpd-2015' ),
+				'NV' => esc_html__( 'Nevada', 'dpd-2015' ),
+				'NH' => esc_html__( 'New Hampshire', 'dpd-2015' ),
+				'NJ' => esc_html__( 'New Jersey', 'dpd-2015' ),
+				'NM' => esc_html__( 'New Mexico', 'dpd-2015' ),
+				'NY' => esc_html__( 'New York', 'dpd-2015' ),
+				'NC' => esc_html__( 'North Carolina', 'dpd-2015' ),
+				'ND' => esc_html__( 'North Dakota', 'dpd-2015' ),
+				'OH' => esc_html__( 'Ohio', 'dpd-2015' ),
+				'OK' => esc_html__( 'Oklahoma', 'dpd-2015' ),
+				'OR' => esc_html__( 'Oregon', 'dpd-2015' ),
+				'PA' => esc_html__( 'Pennsylvania', 'dpd-2015' ),
+				'RI' => esc_html__( 'Rhode Island', 'dpd-2015' ),
+				'SC' => esc_html__( 'South Carolina', 'dpd-2015' ),
+				'SD' => esc_html__( 'South Dakota', 'dpd-2015' ),
+				'TN' => esc_html__( 'Tennessee', 'dpd-2015' ),
+				'TX' => esc_html__( 'Texas', 'dpd-2015' ),
+				'UT' => esc_html__( 'Utah', 'dpd-2015' ),
+				'VT' => esc_html__( 'Vermont', 'dpd-2015' ),
+				'VA' => esc_html__( 'Virginia', 'dpd-2015' ),
+				'WA' => esc_html__( 'Washington', 'dpd-2015' ),
+				'WV' => esc_html__( 'West Virginia', 'dpd-2015' ),
+				'WI' => esc_html__( 'Wisconsin', 'dpd-2015' ),
+				'WY' => esc_html__( 'Wyoming', 'dpd-2015' ),
+				'AS' => esc_html__( 'American Samoa', 'dpd-2015' ),
+				'AA' => esc_html__( 'Armed Forces America (except Canada)', 'dpd-2015' ),
+				'AE' => esc_html__( 'Armed Forces Africa/Canada/Europe/Middle East', 'dpd-2015' ),
+				'AP' => esc_html__( 'Armed Forces Pacific', 'dpd-2015' ),
+				'FM' => esc_html__( 'Federated States of Micronesia', 'dpd-2015' ),
+				'GU' => esc_html__( 'Guam', 'dpd-2015' ),
+				'MH' => esc_html__( 'Marshall Islands', 'dpd-2015' ),
+				'MP' => esc_html__( 'Northern Mariana Islands', 'dpd-2015' ),
+				'PR' => esc_html__( 'Puerto Rico', 'dpd-2015' ),
+				'PW' => esc_html__( 'Palau', 'dpd-2015' ),
+				'VI' => esc_html__( 'Virgin Islands', 'dpd-2015' )
+			),
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'label' => esc_html__( 'State', 'dpd-2015' ),
+			'priority' => 230,
+			'section' => 'contact_info',
+			'settings' => 'us_state',
+			'type' => 'select'
+		)
+	);
+	$wp_customize->get_setting( 'us_state' )->transport = 'postMessage';
+
+	// Zip Code Field
+	$wp_customize->add_setting(
+		'zip_code',
+		array(
+			'default'  	=> '',
+			'transport' => 'postMessage'
+		)
+	);
+	$wp_customize->add_control(
+		'zip_code',
+		array(
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'label'  	=> esc_html__( 'Zip Code', 'dpd-2015' ),
+			'priority' => 240,
+			'section'  	=> 'contact_info',
+			'settings' 	=> 'zip_code',
+			'type' 		=> 'text'
+		)
+	);
+	$wp_customize->get_setting( 'zip_code' )->transport = 'postMessage';
+
+	// Phone Number Field
+	$wp_customize->add_setting(
+		'phone_number',
+		array(
+			'default'  	=> '',
+			'transport' => 'postMessage'
+		)
+	);
+	$wp_customize->add_control(
+		'phone_number',
+		array(
+			'description' 	=> esc_html__( '', 'dpd-2015' ),
+			'label'  	=> esc_html__( 'Phone Number', 'dpd-2015' ),
+			'priority' => 250,
+			'section'  	=> 'contact_info',
+			'settings' 	=> 'phone_number',
+			'type' 		=> 'text'
+		)
+	);
+	$wp_customize->get_setting( 'phone_number' )->transport = 'postMessage';
+
+
+
+
+
+	/*global $dpd_2015_themekit;
+	$svgs 	= $dpd_2015_themekit->get_svg_list();
+	$svgopt = array();
+	$menus 	= dpd_2015_programs_menu();
+
+	foreach ( $svgs as $key => $svg ) {
+
+		$replaced = str_replace( '-', ' ', $key );
+
+		$svgopt[$key] = ucwords( $replaced );
+
+	} // foreach
+
+	foreach ( $menus as $menu ) {
+
+		// Label
+		$wp_customize->add_setting(
+			$menu . '_label',
+			array(
+				'default'  	=> '',
+				'transport' => 'postMessage'
+			)
+		);
+		$wp_customize->add_control(
+			$menu . '_label',
+			array(
+				'description' 	=> esc_html__( '', 'dpd-2015' ),
+				'label'  	=> esc_html__( 'Label', 'dpd-2015' ),
+				'priority' => 10,
+				'section'  	=> $menu,
+				'settings' 	=> $menu . '_label',
+				'type' 		=> 'text'
+			)
+		);
+		$wp_customize->get_setting( $menu . '_label' )->transport = 'postMessage';
+
+
+
+		// URL
+		$wp_customize->add_setting(
+			$menu . '_url',
+			array(
+				'default'  	=> '',
+				'transport' => 'postMessage'
+			)
+		);
+		$wp_customize->add_control(
+			$menu . '_url',
+			array(
+				'description' 	=> esc_html__( '', 'dpd-2015' ),
+				'label' => esc_html__( 'URL', 'dpd-2015' ),
+				'priority' => 10,
+				'section' => $menu,
+				'settings' => $menu . '_url',
+				'type' => 'url'
+			)
+		);
+		$wp_customize->get_setting( $menu . '_url' )->transport = 'postMessage';
+
+
+
+		// Icon
+		$wp_customize->add_setting(
+			$menu . '_icon',
+			array(
+				'default'  	=> 'choice1',
+				'transport' => 'postMessage'
+			)
+		);
+		$wp_customize->add_control(
+			$menu . '_icon',
+			array(
+				'choices' => $svgopt,
+				'description' 	=> esc_html__( '', 'dpd-2015' ),
+				'label' => esc_html__( 'Icon', 'dpd-2015' ),
+				'priority' => 10,
+				'section' => $menu,
+				'settings' => $menu . '_icon',
+				'type' => 'select'
+			)
+		);
+		$wp_customize->get_setting( $menu . '_icon' )->transport = 'postMessage';
+
+
+
+		// Background Image
+		// Returns the image ID, not a URL
+		$wp_customize->add_setting(
+			$menu . '_bg_img',
+			array(
+				'default' => '',
+				'transport' => 'postMessage'
+			)
+		);
+		$wp_customize->add_control(
+			new WP_Customize_Media_Control(
+				$wp_customize,
+				$menu . '_bg_img',
+				array(
+					'description' 	=> esc_html__( '', 'dpd-2015' ),
+					'label' => esc_html__( 'Background Image', 'dpd-2015' ),
+					'mime_type' => '',
+					'priority' => 10,
+					'section' => $menu,
+					'settings' => $menu . '_bg_img'
+				)
+			)
+		);
+		$wp_customize->get_setting( $menu . '_bg_img' )->transport = 'postMessage';
+
+
+
+		// Background Color
+		$wp_customize->add_setting(
+			$menu . '_color',
+			array(
+				'default'  	=> '#020202',
+				'transport' => 'postMessage'
+			)
+		);
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				$menu . '_color',
+				array(
+					'description' 	=> esc_html__( '', 'dpd-2015' ),
+					'label' => esc_html__( 'Background Color', 'dpd-2015' ),
+					'priority' => 10,
+					'section' => $menu,
+					'settings' => $menu . '_color'
+				)
+			)
+		);
+		$wp_customize->get_setting( $menu . '_color' )->transport = 'postMessage';
+
+	} // foreach*/
+
+
+
 
 
 
@@ -509,6 +1108,7 @@ function dpd_2015_register_fields( $wp_customize ) {
 
 
 	// Page Select Field
+	// Returns the page ID
 	$wp_customize->add_setting(
 		'select_page_field',
 		array(
@@ -549,7 +1149,7 @@ function dpd_2015_register_fields( $wp_customize ) {
 				'priority' => 10,
 				'section' => 'new_section',
 				'settings' => 'color_field'
-			),
+			)
 		)
 	);
 	$wp_customize->get_setting( 'color_field' )->transport = 'postMessage';
@@ -568,7 +1168,7 @@ function dpd_2015_register_fields( $wp_customize ) {
 				'priority' => 10,
 				'section' => 'new_section',
 				'settings' => 'file_upload'
-			),
+			)
 		)
 	);
 
@@ -696,6 +1296,12 @@ function dpd_2015_generate_css( $selector, $style, $mod_name, $prefix = '', $pos
 
 } // dpd_2015_generate_css()
 
+function dpd_2015_programs_menu() {
+
+	return array( 'airport_menu', 'banquets_menu', 'disc_menu', 'golf_menu', 'lakeshore_menu', 'foundation_menu', 'zoo_menu' );
+
+} // dpd_2015_programs_menu()
+
 /**
  * This will output the custom WordPress settings to the live theme's WP head.
  *
@@ -707,8 +1313,21 @@ function dpd_2015_generate_css( $selector, $style, $mod_name, $prefix = '', $pos
  */
 function dpd_2015_header_output() {
 
+	global $dpd_2015_themekit;
+
 	?><!-- Customizer CSS -->
 	<style type="text/css"><?php
+
+		$menus = dpd_2015_programs_menu();
+
+		foreach ( $menus as $menu ) {
+
+			$url = $dpd_2015_themekit->get_customizer_media_info( $menu . '_bg_img' );
+			$class = str_replace( '_', '-', $menu );
+
+			echo '.' . $class . '{ background-image: url( ' . esc_url( $url['url'] ) . ' ); }';
+
+		} // foreach
 
 		// pattern:
 		// dpd_2015_generate_css( 'selector', 'style', 'mod_name', 'prefix', 'postfix', true );
@@ -732,6 +1351,6 @@ function dpd_2015_header_output() {
  */
 function dpd_2015_live_preview() {
 
-	wp_enqueue_script( 'dpd_2015_customizer', get_template_directory_uri() . '/js/customizer.min.js', array( 'jquery', 'customize-preview' ), '', true );
+	wp_enqueue_script( 'dpd_2015_customizer', get_template_directory_uri() . '/assets/js/customizer.min.js', array( 'jquery', 'customize-preview' ), '', true );
 
 } // dpd_2015_live_preview()

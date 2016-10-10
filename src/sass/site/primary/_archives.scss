@@ -1,0 +1,18 @@
+.search-results,
+.blog {
+
+	article {
+		margin-bottom: 3em;
+	}
+
+	.entry-title {
+		a {
+			@include unline( $green );
+		}
+	}
+
+	.read-more {
+		color: $green;
+	}
+
+}

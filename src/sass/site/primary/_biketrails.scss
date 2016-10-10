@@ -1,0 +1,90 @@
+.biketrails {
+	border 	: none;
+	display : inline-table;
+	height 	: 1000px;
+	position: relative;
+	width 	: 700px;
+
+	> * {
+		position: absolute;
+	}
+
+	a {
+		display: block;
+	}
+
+	img#bike_r1_c1 {
+		left 	: 0;
+		top 	: 0;
+	}
+
+	img#bike_r2_c1 {
+		left 	: 0;
+		top 	: 131px;
+	}
+
+	a#bike_r2_c3 {
+		left 	: 188px;
+		top 	: 131px;
+	}
+
+	img#bike_r2_c5 {
+		right 	: 0;
+		top 	: 131px;
+	}
+
+	a#bike_r3_c3 {
+		left 	: 188px;
+		top 	: 422px;
+	}
+
+	img#bike_r3_c4 {
+		left 	: 330px;
+		top 	: 422px;
+	}
+
+	a#bike_r4_c3 {
+		left 	: 188px;
+		top 	: 567px;
+	}
+
+	img#bike_r5_c1 {
+		left 	: 0;
+		top 	: 624px;
+	}
+
+	a#bike_r5_c2 {
+		left 	: 76px;
+		top 	: 624px;
+	}
+
+	a#bike_r5_c3 {
+		left 	: 188px;
+		top 	: 624px;
+	}
+
+	a#bike_r6_c5 {
+		right 	: 46px;
+		top 	: 722px;
+	}
+
+	img#bike_r6_c6 {
+		right 	: 0;
+		top 	: 722px;
+	}
+
+	img#bike_r7_c3 {
+		right 	: 244px;
+		top 	: 766px;
+	}
+
+	img#bike_r8_c5 {
+		right 	: 46px;
+		top 	: 813px;
+	}
+
+	img#bike_r9_c2 {
+		left 	: 76px;
+		top 	: 920px;
+	}
+}

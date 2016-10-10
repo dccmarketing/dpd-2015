@@ -1,0 +1,46 @@
+.homepage-buttons-menu {
+	@extend %orangegrad;
+	color 			: $light;
+	text-transform 	: uppercase;
+
+	a {
+		@include unline( $light );
+		display: block;
+
+		&:hover,
+		&:focus,
+		&.focus,
+		&:visited {
+			color: $light;
+		}
+	}
+
+	.menu-items {
+		@extend %listreset;
+
+		@media only screen and (min-width: $bp__home-buttons) {
+			display 		: flex;
+			justify-content : center;
+		}
+	}
+
+	.menu-item {
+		border-bottom 	: 1px solid $light;
+		padding 		: 0.75em;
+		text-align 		: center;
+
+		@media only screen and (min-width: $bp__home-buttons) {
+			border-bottom 	: none;
+			padding 		: 0.25em;
+			width 			: 33%;
+
+			&:not(:last-child) {
+				border-right: 1px solid $light;
+			}
+		}
+	}
+
+	.homepage-buttons {
+		padding: 0;
+	}
+}

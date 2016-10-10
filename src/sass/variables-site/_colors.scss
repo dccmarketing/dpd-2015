@@ -1,0 +1,95 @@
+$light		: #fff;
+$med		: #a7a9ac;
+$dark		: #020202;
+
+$green 		: #00853e;
+$dkorange	: #dd6928;
+$ltorange 	: #f4b916;
+$dkgray 	: #58585a;
+$ltgray 	: #d1d2d4;
+$neongreen 	: #96ff00;
+
+$blue 		: #0071bb;
+$maroon 	: #a62b31;
+$dkblue 	: #07314a;
+$burntorange: #a44121;
+$brown 		: #8a6546;
+
+
+$translight : rgba( $light, 0.8 );
+$ltrgray 	: lighten( $med, 25% );
+$transgreen : rgba( $green, 0.85 );
+$ltgreen 	: lighten( $green, 15% );
+$transgreen2: rgba( $green, 0.7 );
+
+// Backgrounds
+$color__background-body		: $light;
+$color__background-screen	: #f1f1f1;
+$color__background-hr		: $med;
+$color__background-pre		: $med;
+$color__background-ins		: #fff9c0;
+$color__bg-input 			: $med;
+$color__background-button	: $med;
+$color__bg-button-hover 	: lighten( $color__background-button, 10% );
+$color__bg-button-focus 	: darken( $color__background-button, 10% );
+
+// Text colors
+$color__text-screen			: #21759b;
+$color__text-input			: $dkgray;
+$color__text-input-focus	: $dkgray;
+$color__text-pre 			: $light;
+$color__link				: $green;
+$color__link-visited		: $green;
+$color__link-hover			: $green;
+$color__text-main			: $dkgray;
+$color__text-social 		: $light;
+$color__text-ins 			: $dark;
+$color__text-button 		: rgba(0, 0, 0, .8);
+$color__text-button-hover 	: $light;
+$color__text-button-focus 	: $light;
+$color__text-site-title 	: $dkgray;
+
+// Border colors
+$color__border-button		: $med $med #bbb;
+$color__border-button-hover	: $med #bbb #aaa;
+$color__border-button-focus	: #aaa #bbb #bbb;
+$color__border-input		: $med;
+$color__border-input-focus 	: $med;
+$color__outline 			: $med;
+$color__border-abbr			: #666;
+$color__outline-menu-link 	: $med;
+
+// Shadow colors
+$color__shadow-button-text 			: rgba(255, 255, 255, 0.8);
+$color__shadow-button-inner 		: rgba(255, 255, 255, 0.5);
+$color__shadow-button-inner-2 		: rgba(0, 0, 0, 0.05);
+$color__shadow-button-inner-hover 	: rgba(255, 255, 255, 0.8);
+$color__shadow-button-inner-2-hover : rgba(0, 0, 0, 0.02);
+$color__shadow-button-inner-focus 	: rgba(255, 255, 255, 0.5);
+$color__shadow-button-inner-2-focus : rgba(0, 0, 0, 0.15);
+
+// Menu colors
+$color__bg-menu-button			: $light;
+$color__bg-menu-button-mobile 	: $med;
+$color__bg-menu-button-pseudo 	: $color__bg-menu-button-mobile;
+$color__bg-menu-item			: $med;
+$color__bg-menu-item-mobile		: $light;
+$color__bg-menu-current			: transparent;
+$color__bg-menu-current-hover	: darken( $color__bg-menu-item, 25% );
+
+$color__text-menu				: $dkgray;
+$color__text-menu-hover			: darken( $color__text-menu, 25% );
+$color__text-menu-mobile		: $green;
+$color__text-menu-mobile-hover 	: $green;
+$color__text-menu-button		: $light;
+$color__text-menu-button-mobile : $light;
+$color__text-menu-button-pseudo : $color__text-menu-button-mobile;
+$color__text-menu-current		: $dkgray;
+$color__text-menu-current-hover	: darken( $green, 15% );
+$color__text-submenu			: $green;
+
+// Search Colors
+$color__bg-search-container 	: $med;
+$color__bg-search-field 		: $light;
+$color__bg-search-btn-hover 	: $med;
+$color__text-search-field 		: $dkgray;

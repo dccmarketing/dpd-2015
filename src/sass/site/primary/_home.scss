@@ -1,0 +1,193 @@
+.home {
+
+	.site-main {
+		border-top 	: 1px solid $med;
+		display 	: flex;
+		flex-wrap 	: wrap;
+
+		a {
+			@include unline( $dkgray );
+			font-weight: 700;
+		}
+
+		section {
+			width: 100%;
+
+			@media only screen and (min-width: $bp__quick-links) {
+				&.site-info,
+				&.quick-links-section {
+					width: 47.5%;
+
+					&:nth-child(odd) {
+						margin-right: 5%;
+					}
+				}
+			}
+
+			@media only screen and (min-width: $bp__tablet) {
+				width: 47.5%;
+
+				&:nth-child(odd) {
+					margin-right: 5%;
+				}
+			}
+
+			h2 {
+				text-transform: uppercase;
+			}
+		}
+	}
+
+	.events {
+		@extend %listreset;
+
+		.event {
+			clear 			: both;
+			margin-bottom 	: 1em;
+		}
+
+		.dashicons-calendar-alt {
+			float 		: left;
+			font-size 	: 2.25em;
+			height 		: 1.5em;
+			text-align 	: left;
+			width 		: 1.25em;
+		}
+
+		.event-date {
+			display 	: block;
+			line-height : 1;
+		}
+
+		.event-title {
+			@include unline( $green );
+		}
+
+		.all-events-link {
+			@include unline( $dkgray );
+		}
+	}
+
+	.nav-quick-links {
+		a {
+			@include unline( $green );
+		}
+
+		.menu-items {
+			@extend %listreset;
+		}
+	}
+
+	.news {
+		@extend %listreset;
+
+		.news-post {
+			display 		: flex;
+			margin-bottom 	: 1em;
+		}
+
+		.news-date {
+			margin-right	: 2.5%;
+			text-align 		: center;
+			text-transform	: uppercase;
+			width 			: 15%;
+
+			@media only screen and (min-width: $bp__tablet) {
+				width: 12.5%;
+			}
+		}
+
+		.news-month {
+			@extend %orangegrad;
+			color 			: $light;
+			display 		: block;
+		}
+
+		.news-day {
+			background-color: $light;
+			color 			: $dkgray;
+			display 		: block;
+		}
+
+		.news-info {
+			width: 82.5%;
+
+			@media only screen and (min-width: $bp__tablet) {
+				width: 85%;
+			}
+
+			p {
+				margin: 0;
+			}
+		}
+
+		.news-title {
+
+			a {
+				color 		: $green;
+			}
+		}
+
+		.news-content {
+
+		}
+
+		.read-more {
+			color 	: $green;
+			display : block;
+		}
+	}
+
+	.site-copyright {
+		a {
+			color 		: $dkgray;
+			font-weight : 400;
+		}
+
+		h2 {
+			color: transparent;
+		}
+
+		ul {
+			@extend %listreset;
+
+			@media only screen and (min-width: $bp__footer) {
+				display: flex;
+
+				li {
+
+					&:not(:first-child) {
+						padding-left: 0.5em;
+					}
+
+					&:not(:last-child) {
+						border-right	: 1px solid;
+						padding-right	: 0.5em
+					}
+
+					&.copyright {
+						display: block;
+					}
+				}
+			}
+		}
+
+		.footer-page-link {
+			color 			: $green;
+			font-weight 	: 700;
+			text-transform	: uppercase;
+		}
+
+		.credits {
+			font-size: 0.85em;
+		}
+
+	}
+
+	.dpd-news-link,
+	.dpd-events-link {
+		display: block;
+		//float: right;
+	}
+
+}

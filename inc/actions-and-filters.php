@@ -32,7 +32,9 @@ class dpd_2015_Actions_and_Filters {
 		add_filter( 'post_mime_types', array( $this, 'add_mime_types' ) );
 		add_filter( 'upload_mimes', array( $this, 'custom_upload_mimes' ) );
 		add_filter( 'body_class', array( $this, 'page_body_classes' ) );
-		//add_action( 'wp_head', array( $this, 'background_images' ) );
+		add_action( 'wp_head', array( $this, 'background_images' ) );
+		add_action( 'wp_head', array( $this, 'featured_images' ) );
+		add_action( 'wp_head', array( $this, 'programs_menu_images' ) );
 		add_filter( 'excerpt_length', array( $this, 'excerpt_length' ) );
 		add_filter( 'excerpt_more', array( $this, 'excerpt_read_more' ) );
 		add_filter( 'mce_buttons_2', array( $this, 'add_editor_buttons' ) );
@@ -44,8 +46,23 @@ class dpd_2015_Actions_and_Filters {
 		add_filter( 'style_loader_src', array( $this, 'remove_cssjs_ver' ), 10, 2 );
 		add_filter( 'script_loader_src', array( $this, 'remove_cssjs_ver' ), 10, 2 );
 		add_filter( 'embed_oembed_html', array( $this, 'youtube_add_id_attribute' ), 99, 4 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'deregister_styles_and_scripts' ), 999 );
+		add_filter( 'sm_category-text', array( $this, 'change_simplemap_category_text' ), 99, 1 );
+		add_filter( 'sm_tag-text', array( $this, 'change_simplemap_tag_text' ), 99, 1 );
+		add_filter( 'sm-search-label-search', array( $this, 'change_simplemap_search_btn_text' ), 99, 1 );
+		add_shortcode( 'biketrails', array( $this, 'bike_trails' ) );
 
 	} // loader()
+
+	/**
+	 * Removes and deregisters stylesheets and scripts from the system.
+	 */
+	public function deregister_styles_and_scripts() {
+
+		wp_dequeue_style( 'rpt' );
+		wp_deregister_style( 'rpt' );
+
+	} // deregister_styles_and_scripts()
 
 	/**
 	 * Additional theme setup
@@ -64,7 +81,7 @@ class dpd_2015_Actions_and_Filters {
 	/**
 	 * Enqueues scripts and styles for the admin
 	 */
-	public function admin_scripts_and_styles() {
+	public function admin_scripts_and_styles( $hook ) {
 
 		wp_enqueue_style( 'dpd-2015-admin', get_stylesheet_directory_uri() . '/admin.css' );
 
@@ -78,8 +95,8 @@ class dpd_2015_Actions_and_Filters {
 	public function more_scripts_and_styles() {
 
 		wp_enqueue_style( 'dashicons' );
-		wp_enqueue_script( 'dpd-2015-search', get_template_directory_uri() . '/js/hidden-search.min.js', array(), '20150807', true );
-		wp_enqueue_script( 'dpd-2015-topmenu', get_template_directory_uri() . '/js/hidden-topmenu.min.js', array(), '20160113', true );
+		wp_enqueue_script( 'enquire', '//cdnjs.cloudflare.com/ajax/libs/enquire.js/2.1.2/enquire.min.js', array(), '20150804', true );
+		wp_enqueue_script( 'dpd-2015-public', get_template_directory_uri() . '/assets/js/public.min.js', array( 'jquery', 'enquire' ), '20161010', true );
 		wp_enqueue_style( 'dpd-2015-fonts', $this->fonts_url(), array(), null );
 
 	} // more_scripts_and_styles()
@@ -92,7 +109,6 @@ class dpd_2015_Actions_and_Filters {
 	function login_scripts() {
 
 		wp_enqueue_style( 'dpd-2015-login', get_stylesheet_directory_uri() . '/login.css', 10, 2 );
-		wp_enqueue_script( 'enquire', '//cdnjs.cloudflare.com/ajax/libs/enquire.js/2.1.2/enquire.min.js', array(), '20150804', true );
 
 	} // login_scripts()
 
@@ -129,30 +145,89 @@ class dpd_2015_Actions_and_Filters {
 	/**
 	 * Creates a style tag in the header with the background image
 	 *
-	 * @return 		void
+	 * @return 		mixed 		HTML style markup
 	 */
 	public function background_images() {
 
-		$output = '';
-		$image 	= get_thumbnail_url( get_the_ID(), 'full' );
+		global $dpd_2015_themekit;
 
-		if ( ! $image ) {
+		$image = $dpd_2015_themekit->get_customizer_media_info( 'site_bg_image', array( 'full' ) );
 
-			$image = get_theme_mod( 'default_bg_image' );
+		if ( empty( $image ) ) { return; }
 
-		}
-
-		if ( ! empty( $image ) ) {
-
-			$output .= '<style>';
-			$output .= '@media screen and (min-width:768px){.site-header{background-image:url(' . $image . ');}';
-			$output .= '</style>';
-
-		}
-
-		echo $output;
+		?><style>
+			@media screen and (min-width:768px){
+				.site-content{background-image:url(<?php echo esc_url( $image ); ?>);
+			}
+		</style><!-- Background Images --><?php
 
 	} // background_images()
+
+	/**
+	 * Displays the interactive bike trails map
+	 *
+	 * @return 		mixed 		HTML markup
+	 */
+	public function bike_trails() {
+
+		?><div class="biketrails">
+			<img id="bike_r1_c1" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/biketrails/bike_r1_c1.jpg" name="bike_r1_c1" />
+			<img id="bike_r2_c1" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/biketrails/bike_r2_c1.jpg" name="bike_r2_c1" />
+			<a class="fancybox-youtube" href="http://youtu.be/UXnqTPG-LoA" id="bike_r2_c3"><img id="bike_r2_c3" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/biketrails/bike_r2_c3.jpg" name="bike_r2_c3" /></a>
+			<img id="bike_r2_c5" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/biketrails/bike_r2_c5.jpg" name="bike_r2_c5" />
+			<a class="fancybox-youtube" href="http://youtu.be/VEAPEaC7cfk" id="bike_r3_c3"><img id="bike_r3_c3" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/biketrails/bike_r3_c3.jpg" name="bike_r3_c3" /></a>
+			<img id="bike_r3_c4" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/biketrails/bike_r3_c4.jpg" name="bike_r3_c4" />
+			<a class="fancybox-youtube" href="http://youtu.be/Zx9hzbllHxI" id="bike_r4_c3"><img id="bike_r4_c3" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/biketrails/bike_r4_c3.jpg" name="bike_r4_c3" /></a>
+			<img id="bike_r5_c1" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/biketrails/bike_r5_c1.jpg" name="bike_r5_c1" />
+			<a class="fancybox-youtube" href="http://youtu.be/R5GwuzouELk" id="bike_r5_c2"><img id="bike_r5_c2" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/biketrails/bike_r5_c2.jpg" name="bike_r5_c2" /></a>
+			<a class="fancybox-youtube" href="http://youtu.be/Idm0xE-M3s8" id="bike_r5_c3"><img id="bike_r5_c3" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/biketrails/bike_r5_c3.jpg" name="bike_r5_c3" /></a>
+			<a class="fancybox-youtube" href="http://youtu.be/0nn-TkDNgPY" id="bike_r6_c5"><img id="bike_r6_c5" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/biketrails/bike_r6_c5.jpg" name="bike_r6_c5" /></a>
+			<img id="bike_r6_c6" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/biketrails/bike_r6_c6.jpg" name="bike_r6_c6" />
+			<img id="bike_r7_c3" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/biketrails/bike_r7_c3.jpg" name="bike_r7_c3" />
+			<img id="bike_r8_c5" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/biketrails/bike_r8_c5.jpg" name="bike_r8_c5" />
+			<img id="bike_r9_c2" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/assets/images/biketrails/bike_r9_c2.jpg" name="bike_r9_c2" />
+		</div><?php
+
+	} // bike_trails()
+
+	/**
+	 * Changes the category label on the search form.
+	 *
+	 * @param 		string 		$label 		The current singular text
+	 *
+	 * @return 		string 					The modified singular text
+	 */
+	public function change_simplemap_category_text( $label ) {
+
+		return __( 'Type ', 'dpd-2015' );
+
+	} // change_simplemap_category_text()
+
+	/**
+	 * Changes the submit button label on the search form.
+	 *
+	 * @param 		string 		$label 		The current button text
+	 *
+	 * @return 		string 					The modified button text
+	 */
+	public function change_simplemap_search_btn_text( $label ) {
+
+		return __( 'Filter Results', 'dpd-2015' );
+
+	} // change_simplemap_search_btn_text()
+
+	/**
+	 * Changes the tag label on the search form.
+	 *
+	 * @param 		string 		$label 		The current singular text
+	 *
+	 * @return 		string 					The modified singular text
+	 */
+	public function change_simplemap_tag_text( $label ) {
+
+		return __( 'Amenties ', 'dpd-2015' );
+
+	} // change_simplemap_tag_text()
 
 	/**
 	 * Adds support for additional MIME types to WordPress
@@ -214,14 +289,44 @@ class dpd_2015_Actions_and_Filters {
 		global $post;
 
 		$return = sprintf( '... <a class="moretag read-more" href="%s">', esc_url( get_permalink( $post->ID ) ) );
-		$return .= esc_html__( 'Read more', 'dcc-2015' );
+		$return .= esc_html__( 'See more', 'dpd-2015' );
 		$return .= '<span class="screen-reader-text">';
-		$return .= sprintf( esc_html__( ' about %s', 'dcc-2015' ), $post->post_title );
+		$return .= sprintf( esc_html__( ' about %s', 'dpd-2015' ), $post->post_title );
 		$return .= '</span></a>';
 
 		return $return;
 
 	} // excerpt_read_more()
+
+	/**
+	 * Adds style tag for featured images to pages.
+	 *
+	 * @return 		mixed 		HTML style markup
+	 */
+	public function featured_images() {
+
+		if ( ! is_page() || is_front_page() ) { return; }
+
+		global $dpd_2015_themekit;
+
+		$output = '';
+		$image 	= $dpd_2015_themekit->get_thumbnail_url( get_the_ID(), 'full' );
+
+		if ( ! $image ) {
+
+			$image = $dpd_2015_themekit->get_customizer_media_info( 'site_feat_image', array( 'full' ) );
+
+		}
+
+		if ( empty( $image ) ) { return; }
+
+		?><style>
+			@media screen and (min-width:768px){
+				.feat-img{background-image:url(<?php echo esc_url( $image ); ?>);
+			}
+		</style><!-- Featured Images --><?php
+
+	} // featured_images()
 
 	/**
 	 * Properly encode a font URLs to enqueue a Google font
@@ -356,6 +461,45 @@ class dpd_2015_Actions_and_Filters {
 	} // page_template_column_head()
 
 	/**
+	 * Adds style tag for programs menu item background images.
+	 *
+	 * @return 		mixed 		HTML style markup
+	 */
+	public function programs_menu_images() {
+
+		if ( ! is_front_page() ) { return; }
+
+		if ( is_multisite() && ! is_main_site() ) {
+
+			switch_to_blog(1);
+
+		}
+
+		$menu_items = wp_get_nav_menu_items( 'programs-menu' );
+
+		if ( empty( $menu_items ) ) { return; }
+
+		?><style><?php
+
+		foreach ( $menu_items as $menu_item ) {
+
+			$bgID = get_post_meta( $menu_item->ID, 'menu-item-bg-img', true );
+
+			if ( empty( $bgID ) && ! is_int( $bgID ) ) { continue; }
+
+			$imgURL = wp_get_attachment_url( $bgID );
+
+			echo '.nav-programs li.' . $menu_item->classes[1] . '{background-image:url(' . esc_url( $imgURL ) . ');}';
+
+		}
+
+		?></style><!-- Program Menu BGs --><?php
+
+		restore_current_blog();
+
+	} // programs_menu_images()
+
+	/**
 	 * Removes query strings from static resources
 	 * to increase Pingdom and GTMatrix scores.
 	 *
@@ -438,8 +582,17 @@ class dpd_2015_Actions_and_Filters {
 
 		if ( ! $check ) { return $html; }
 
-		$id 	= explode( 'watch?v=', $url );
-		$html 	= str_replace( 'allowfullscreen>', 'allowfullscreen id="video-' . $id[1] . '">', $html );
+		if ( strpos( $url, 'watch?v=' ) > 0 ) {
+
+			$id = explode( 'watch?v=', $url );
+
+		} else {
+
+			$id = explode( '.be/', $url );
+
+		}
+
+		$html = str_replace( 'allowfullscreen>', 'allowfullscreen id="video-' . $id[1] . '">', $html );
 
 		return $html;
 

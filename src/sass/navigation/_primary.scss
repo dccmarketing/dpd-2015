@@ -1,0 +1,395 @@
+.main-navigation {
+	clear			: both;
+	display			: block;
+	float			: left;
+	text-transform 	: uppercase;
+	width			: 100%;
+
+	.nav-menu {
+
+		@media only screen and (min-width: $bp__menu-button-side) and (max-width: $bp__laptop - 1) {
+			background-color: transparent !important;
+			color 			: $light;
+		}
+
+		@media only screen and (min-width: $bp__laptop) {
+			margin: 0 -3.25em;
+		}
+	}
+
+	ul {
+		@extend %listreset;
+		display 	: none;
+		text-align 	: left;
+
+		@media only screen and (min-width: $bp__menu-button+1) {
+			//display 		: block;
+			//text-align 		: center;
+			display 		: flex;
+			justify-content : center;
+		}
+
+		ul {
+			background-color: $color__bg-menu-item-mobile;
+			display			: inherit;
+
+			@media only screen and (min-width: $bp__menu-button-side) and (max-width:$bp__menu-button) {
+				background-color: transparent;
+			}
+
+			@media only screen and (min-width: $bp__menu-button+1) {
+				box-shadow	: 0 3px 3px rgba(0, 0, 0, 0.2);
+				left 		: 0;
+				opacity 	: 0;
+				position	: absolute;
+				transition 	: visibility 0s ease 0.25s,opacity 0.25s ease;
+				visibility 	: hidden;
+				z-index		: 99999;
+			} // breakpoint
+
+			ul {
+
+				@media only screen and (min-width: $bp__menu-button+1) {
+					left: 100%;
+					top	: 0;
+				}
+
+				a {
+					@media only screen and (max-width: $bp__menu-button) {
+						border-left : none;
+						padding 	: 0.5em 3em;
+					}
+				}
+
+				ul {
+
+					ul {
+
+						a {
+							white-space : inherit;
+							width 		: 250px;
+						}
+					}
+				}
+			}
+
+			a {
+				padding: 0.5em 2em;
+
+				@media only screen and (min-width: $bp__menu-button+1) {
+					color 			: $color__text-submenu;
+					justify-content : space-between;
+					padding 		: 0.5em 1em;
+					white-space 	: nowrap;
+				}
+			}
+
+			li {
+
+				&:last-child {
+
+					@media only screen and (max-width: $bp__menu-button) {
+						padding-bottom: 0;
+					}
+				}
+
+			}
+
+			> li {
+				&.menu-item-has-children {
+					> a {
+						&:after {
+							@media only screen and (min-width: $bp__menu-button+1) {
+								content 	: "\f345";
+								font-family : dashicons;
+								margin-left : 1em;
+							}
+						}
+					}
+				}
+
+			}
+
+		} // .submenu ul
+
+		> li {
+			@media only screen and (max-width: $bp__menu-button) {
+				position: relative;
+
+				&.menu-item-has-children {
+
+					.sub-menu {
+						display: none;
+					}
+
+					.show-hide {
+						color 		: $green;
+						cursor 		: pointer;
+						position 	: absolute;
+						right 		: 0;
+						text-align 	: center;
+						top 		: 0.5em;
+						width 		: 2em;
+
+						@media only screen and (min-width: $bp__menu-button-side) {
+							color 		: $light;
+						}
+					}
+				}
+			}
+
+			@media only screen and (min-width: $bp__menu-button+1) {
+				.show-hide {
+					display: none;
+				}
+			}
+		}
+
+	} // first-level ul
+
+	li {
+
+		@media only screen and (min-width: $bp__menu-button+1) {
+			//display 	: inline-block;
+			flex-grow 	: 1;
+			position 	: relative;
+		}
+
+		&:hover,
+		&.focus {
+
+			> .wrap-submenu,
+			> .wrap-submenu > ul {
+				@media only screen and (min-width: $bp__menu-button+1) {
+					opacity 	: 1;
+					visibility 	: visible;
+				}
+			}
+
+			> a {
+				@media only screen and (max-width: $bp__menu-button) {
+					font-weight: 700;
+				}
+
+				@media only screen and (min-width: $bp__menu-button+1) {
+					color: $color__text-menu-hover;
+				}
+			}
+
+			> .show-hide {
+
+				@media only screen and (min-width: $bp__menu-button-side) {
+					//color: $green !important;
+				}
+			}
+		}
+
+		&.open {
+
+			> .wrap-submenu,
+			> .wrap-submenu ul,
+			a .dashicons.children {
+				opacity 	: 1;
+				visibility 	: visible;
+			}
+		}
+	}
+
+	a {
+		background-color: $light;
+		color 			: $color__text-menu-mobile;
+		display			: block;
+		padding 		: 0.5em 1em;
+		text-decoration	: none;
+
+		@media only screen and (min-width: $bp__menu-button-side) {
+			background-color: transparent;
+			color 			: $light;
+		}
+
+		@media only screen and (min-width: $bp__menu-button+1) {
+			align-items 	: center;
+			color 			: $color__text-menu;
+			display 		: flex;
+			justify-content : center;
+			padding 		: 0;
+		}
+
+		&:focus {
+			outline-color: $color__outline-menu-link;
+		}
+	}
+
+	.current_page_item,
+	.current-menu-item,
+	.current-menu-parent,
+	.current_page_ancestor,
+	.current-menu-ancestor {
+
+		> a {
+			color 		: $color__text-menu-current;
+			font-weight : 700;
+		}
+
+		&:hover,
+		&.focus {
+
+			> a {
+				color: $color__text-menu-current-hover;
+			}
+		}
+	}
+
+	&.toggled {
+
+		.nav-menu {
+			@extend %menutoggle;
+		}
+
+		.menu-main-menu-container {
+			@media only screen and (min-width: $bp__menu-button-side) and (max-width: $bp__laptop) {
+				transform: translateX(0);
+			}
+
+		}
+
+		/* .menu-toggle {
+			right: $size__menu_width;
+		} */
+	}
+
+	.facilities-and-rentals {
+
+		@media only screen and (min-width: $bp__menu-button+1) {
+			position: static;
+
+			.sub-menu {
+				columns : 300px 3;
+				width 	: 100%;
+
+				li {
+					break-inside: avoid-column;
+				}
+
+				a {
+					white-space: normal;
+
+					&:hover {
+						background-color: $green;
+						color 			: $light;
+					}
+				}
+			}
+		}
+	}
+
+} // .main-navigation
+
+// Center Menu
+.menu-main-menu-container {
+	margin		: 0 auto;
+	max-width 	: $size__max-width;
+	position 	: relative;
+
+	@media only screen and (min-width: $bp__menu-button+1) {
+		padding 	: 0 2%;
+
+		> ul {
+			> li {
+
+				> a {
+					text-align: center;
+				}
+
+				&:not(:last-child) {
+
+					> a {
+						border-right: 1px solid;
+					}
+				}
+
+				/* Removes padding to make these menu items as close to the edge as possible
+
+				&:first-child a {
+					padding-left: 0;
+				}
+
+				&:last-child a {
+					padding-right: 0;
+				} */
+			}
+		}
+	}
+
+	/**
+	 * Tablet menu - slide in from left - on top or pushing content
+	 */
+	@media only screen and (min-width: $bp__menu-button-side) and (max-width: $bp__laptop) {
+		background-color: $transgreen;
+		bottom 			: 0;
+		height 			: 100%;
+		left 			: 0;
+		overflow 		: auto;
+		position 		: fixed;
+		top 			: 0;
+		transform 		: translateX( -400px);
+		transition 		: transform 0.4s ease;
+		width 			: 400px;
+		z-index 		: 9999;
+
+		.admin-bar & {
+			padding-top: $size__wp-admin-bar-1;
+
+			@media only screen and (min-width: $bp__admin-bar-1) {
+				padding-top: $size__wp-admin-bar-2;
+			}
+		}
+	}
+}
+
+/* Small menu */
+.menu-toggle {
+	@extend %menutoggle;
+	@extend %orangegrad;
+
+	&:hover,
+	&:active,
+	&:focus,
+	&.focus {
+		@extend %orangegrad;
+	}
+
+	@media only screen and (min-width: $bp__menu-button-side) and (max-width: $bp__laptop) {
+		background-color: $color__bg-menu-button;
+		//bottom 			: 1em;
+		color 			: $color__text-menu-button;
+		position 		: absolute;
+		//right 			: calc( 2% + 1em );
+		right 			: 0;
+		top 			: 0;
+		width 			: 25%;
+		z-index 		: 99;
+	}
+
+	.admin-bar & {
+
+		@media only screen and (min-width: $bp__menu-button-side) and (max-width: $bp__admin-bar-1 - 1) {
+			top: $size__wp-admin-bar-1;
+		}
+
+		@media only screen and (min-width: $bp__admin-bar-1) and (max-width: $bp__menu-button) {
+			top: $size__wp-admin-bar-2;
+		}
+	}
+
+	@media only screen and (min-width: $bp__menu-button+1) {
+		display 		: none;
+	}
+}
+
+.children-caret {
+	display 	: inline-block;
+	height 		: 0.75em;
+	margin-left : 0.25em;
+	width 		: 0.75em;
+}

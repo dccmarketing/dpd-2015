@@ -28,14 +28,48 @@ class dpd_2015_Menukit {
 		//add_filter( 'walker_nav_menu_start_el', array( $this, 'dashicon_after_menu_item' ), 10, 4 );
 		//add_filter( 'walker_nav_menu_start_el', array( $this, 'dashicon_only_menu_item' ), 10, 4 );
 		//add_filter( 'walker_nav_menu_start_el', array( $this, 'menu_caret' ), 10, 4 );
-		//add_filter( 'walker_nav_menu_start_el', array( $this, 'svg_before_menu_item' ), 10, 4 );
+		add_filter( 'walker_nav_menu_start_el', array( $this, 'menu_show_hide' ), 10, 4 );
+		add_filter( 'walker_nav_menu_start_el', array( $this, 'svg_before_menu_item' ), 10, 4 );
 		//add_filter( 'walker_nav_menu_start_el', array( $this, 'svg_after_menu_item' ), 10, 4 );
 		add_filter( 'walker_nav_menu_start_el', array( $this, 'svg_only_menu_item' ), 10, 4 );
 		add_filter( 'walker_nav_menu_start_el', array( $this, 'search_icon_only' ), 10, 4 );
 		add_shortcode( 'listmenu', array( $this, 'list_menu' ) );
 		add_filter( 'wp_setup_nav_menu_item', array( $this, 'add_menu_title_as_class' ), 10, 1 );
+		//add_filter( 'nav_menu_css_class', array( $this, 'add_gray_to_programs_menu_items' ), 10, 4 );
 
-	} // laoder()
+	} // loader()
+
+	/**
+	 * Conditionally adds the gray class to items in the program menu.
+	 *
+	 * @param 	array 		$classes 		Array of classes
+	 * @param 	object 		$item 			The menu item object
+	 * @param 	array  		$args 			The menu args
+	 * @param 	int 		$depth 			The menu item depth
+	 *
+	 * @return 	array 						The modified array of classes
+	 */
+	public function add_gray_to_programs_menu_items( $classes, $item, $args, $depth ) {
+
+		if ( 'programs' !== $args->theme_location ) { return $classes; }
+
+		restore_current_blog();
+
+		if ( is_main_site() ) { return $classes; }
+
+		$info = get_blog_details();
+
+		if ( $info->path !== $item->url ) {
+
+			$classes[] = 'gray';
+
+		}
+
+		switch_to_blog(1);
+
+		return $classes;
+
+	} // add_gray_to_programs_menu_items()
 
 	/**
 	 * Adds the Menu Item Title as a class on the menu item
@@ -187,6 +221,38 @@ class dpd_2015_Menukit {
 	} // menu_caret()
 
 	/**
+	 * Add Plus ("+") expander to menus with children
+	 *
+	 * @global 		 			$dcc_2015_themekit 			Themekit class
+	 *
+	 * @param 		string 		$item_output		//
+	 * @param 		object 		$item				//
+	 * @param 		int 		$depth 				//
+	 * @param 		array 		$args 				//
+	 *
+	 * @return 		string 							modified menu
+	 */
+	public function menu_show_hide( $item_output, $item, $depth, $args ) {
+
+		if ( 'primary' !== $args->theme_location ) { return $item_output; }
+		if ( ! in_array( 'menu-item-has-children', $item->classes ) ) { return $item_output; }
+
+		global $edc_2015_themekit;
+
+		$atts 	= $this->get_attributes( $item );
+		$output = '';
+
+		$output .= '<a href="' . $item->url . '">';
+		$output .= $item->title;
+		$output .= '<span class="children"></span>';
+		$output .= '</a>';
+		$output .= '<span class="show-hide">+</span>';
+
+		return $output;
+
+	} // menu_show_hide()
+
+	/**
 	 * Adds an SVG icon before the menu item text
 	 *
 	 * @link 	http://www.billerickson.net/customizing-wordpress-menus/
@@ -200,7 +266,7 @@ class dpd_2015_Menukit {
 	 */
 	public function svg_before_menu_item( $item_output, $item, $depth, $args ) {
 
-		if ( 'services' !== $args->theme_location && 'subheader' !== $args->theme_location ) { return $item_output; }
+		if ( 'programs' !== $args->theme_location ) { return $item_output; }
 
 		$atts 	= $this->get_attributes( $item );
 		$class 	= $this->get_svg_by_class( $item->classes );

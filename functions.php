@@ -22,7 +22,7 @@ function dpd_2015_setup() {
 	 * If you're building a theme based on _s, use a find and replace
 	 * to change 'dpd-2015' to the name of your theme in all the template files
 	 */
-	load_theme_textdomain( 'dpd-2015', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'dpd-2015', get_template_directory() . '/assets/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -48,7 +48,8 @@ function dpd_2015_setup() {
 		'top-header' => esc_html__( 'Top Header', 'dpd-2015' ),
 		'social' => esc_html__( 'Social', 'dpd-2015' ),
 		'quick-links' => esc_html__( 'Quick Links', 'dpd-2015' ),
-		'homepage-buttons' => esc_html__( 'Homepage Buttons', 'dpd-2015' )
+		'homepage-buttons' => esc_html__( 'Homepage Buttons', 'dpd-2015' ),
+		'programs' => esc_html__( 'Programs', 'dpd-2015' )
 	) );
 
 	/*
@@ -108,10 +109,6 @@ function dpd_2015_scripts() {
 
 	wp_enqueue_style( 'dpd-2015-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'dpd-2015-navigation', get_template_directory_uri() . '/js/navigation.min.js', array(), '20120206', true );
-
-	wp_enqueue_script( 'dpd-2015-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.min.js', array(), '20130115', true );
-
 } // dpd_2015_scripts()
 add_action( 'wp_enqueue_scripts', 'dpd_2015_scripts' );
 
@@ -150,4 +147,38 @@ require get_template_directory() . '/inc/themehooks.php';
  */
 require get_template_directory() . '/inc/menukit.php';
 
+/**
+ * Load Menu Images
+ */
+require get_template_directory() . '/inc/menu-images.php';
 
+/**
+ * Load Soliloquy Tweaker
+ */
+require get_template_directory() . '/inc/soliloquy.php';
+
+/**
+ * Load Shortcodes
+ */
+require get_template_directory() . '/inc/shortcodes.php';
+
+/**
+ * Load Shortcodes
+ */
+require get_template_directory() . '/inc/the-events-calendar.php';
+
+/**
+ * Load Main Menu Walker
+ */
+require get_template_directory() . '/inc/main-menu-walker.php';
+
+
+function dpd_2015_is_past_event( $event_id ) {
+
+	if ( ! tribe_is_event( $event_id ) ) { return false; }
+
+	$end_date = tribe_get_end_date( $event_id, true, 'U' );
+
+	return time() > $end_date;
+
+} // dpd_2015_is_past_event()

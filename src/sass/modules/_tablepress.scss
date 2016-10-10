@@ -1,0 +1,80 @@
+.dataTables_wrapper {
+	.dataTables_length {
+		select {
+			background-color: $transgreen2;
+			border-radius 	: 0;
+			color 			: $light;
+		}
+	}
+
+	.dataTables_filter {
+		input {
+			border-radius: 0;
+		}
+	}
+
+	.dataTables_info {
+
+	}
+
+	.dataTables_paginate {
+		.paginate_button {
+			color: $dkgray;
+
+			&:before,
+			&:after {
+				color 		: $dkgray;
+				text-shadow : none !important;
+			}
+		}
+
+		.previous {
+
+		}
+
+		.next {
+
+		}
+	}
+}
+
+.tablepress {
+	thead {
+		tr {
+			th {
+				background-color: $transgreen2;
+				color 			: $light;
+
+				&:hover {
+					background-color: $green !important;
+				}
+			}
+
+			.odd {
+				th {
+
+				}
+			}
+		}
+	}
+
+	tbody {
+		tr {
+			td {
+
+			}
+
+			&.even {
+				td {
+					background-color: rgba( $light, 0.7 );
+				}
+			}
+
+			&.odd {
+				td {
+					background-color: rgba( 249, 249, 249, 0.7 );
+				}
+			}
+		}
+	}
+}

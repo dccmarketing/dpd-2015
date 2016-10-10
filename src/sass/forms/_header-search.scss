@@ -1,0 +1,54 @@
+.site-header {
+
+	.header-search {
+		margin 		: 0 auto;
+		max-width 	: 400px;
+		padding 	: 1em;
+		width 		: 100%;
+
+		@media only screen and (min-width: $bp__menu-button-side) {
+			//margin-bottom 	: 0.5em;
+			//padding 		: 0;
+			width 			: 50%;
+		}
+
+		@media only screen and (min-width: $bp__laptop) {
+			width: 25%;
+		}
+	}
+
+	.search-form {
+		position: relative;
+
+		.search-field {
+			border-color 	: $ltgray;
+			border-radius	: 0;
+			box-sizing 		: border-box;
+			width 			: 100%;
+		}
+
+		.search-submit {
+			@extend %buttonreset;
+
+			border-left : 1px solid $ltgray;
+			position	: absolute;
+			right 		: 0;
+			top 		: 0.25em;
+
+			&:hover,
+			&:focus,
+			&.focus,
+			&:active {
+				color: inherit;
+			}
+
+			.dashicons-search {
+				font-size 	: 1.5em;
+				height 		: 1em;
+				line-height : 1em;
+				width 		: 2em;
+			}
+		}
+	}
+
+}

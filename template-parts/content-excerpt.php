@@ -16,17 +16,13 @@
 
 	?><header class="entry-header justcontent"><?php
 
-		the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
-
-		if ( 'post' == get_post_type() ) :
-
-			?><div class="entry-meta"><?php
-
-				dpd_2015_posted_on();
-
-			?></div><!-- .entry-meta --><?php
-
-		endif;
+		/**
+		 * The entry_header action hook
+		 *
+		 * @hooked 		content_entry_title 		10
+		 * @hooked 		content_entry_meta 			15
+		 */
+		do_action( 'entry_header' );
 
 	?></header><!-- .entry-header --><?php
 
@@ -43,14 +39,10 @@
 
 	/**
 	 * The tha_entry_content_after action hook
+	 *
+	 * @hooked 		entry_footer
 	 */
 	do_action( 'tha_entry_content_after' );
-
-	?><footer class="entry-footer"><?php
-
-		dpd_2015_entry_footer();
-
-	?></footer><!-- .entry-footer --><?php
 
 	/**
 	 * The tha_entry_bottom action hook

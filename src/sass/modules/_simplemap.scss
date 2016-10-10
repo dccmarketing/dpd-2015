@@ -1,0 +1,21 @@
+.location_search_taxonomy_cell {
+	padding-right: 1em;
+}
+
+#location_search_submit_field {
+	@extend %orangegrad;
+	border 			: none;
+	box-shadow 		: none;
+	color 			: $light;
+	text-shadow 	: none;
+	text-transform 	: uppercase;
+}
+
+div.result {
+	.sm_category_list,
+	.sm_tag_list {
+		small {
+			font-size: 0.9em;
+		}
+	}
+}

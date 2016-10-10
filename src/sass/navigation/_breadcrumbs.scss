@@ -1,0 +1,12 @@
+.breadcrumbs {
+	padding : 1em 2% 0;
+	width 	: 100%;
+
+	.home & {
+		display: none;
+	}
+
+	a {
+		@include unline( $dkgray );
+	}
+}

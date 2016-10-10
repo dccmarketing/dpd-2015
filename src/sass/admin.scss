@@ -1,0 +1,26 @@
+/**
+ * Custom styling for the admin
+ */
+
+@import "variables-site/vars";
+@import "mixins/mixins";
+
+.wp-admin {
+
+	.menu-item-bg-img {
+		display 		: block;
+		margin-bottom 	: 0.5em;
+	}
+
+	.menu-item-images {
+		.hide {
+			display: none;
+		}
+	}
+
+	.admin-notes {
+		box-sizing 	: border-box;
+		font-weight : 600;
+		width 		: 100%;
+	}
+}

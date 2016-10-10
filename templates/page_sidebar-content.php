@@ -7,7 +7,8 @@
  * @package DPD_2015
  */
 
-get_header(); ?>
+get_header();
+get_sidebar( 'left' ); ?>
 
 	<div id="primary" class="content-area sidebar-content">
 		<main id="main" class="site-main" role="main"><?php
@@ -29,7 +30,8 @@ get_header(); ?>
 				/**
 				 * The tha_entry_after action hook
 				 *
-				 * @hooked 		comments_section 		10
+				 * @hooked 		posts_nav 				10
+				 * @hooked 		comments_section 		20
 				 */
 				do_action( 'tha_entry_after' );
 
@@ -43,5 +45,4 @@ get_header(); ?>
 		?></main><!-- #main -->
 	</div><!-- #primary --><?php
 
-get_sidebar( 'left' );
 get_footer();

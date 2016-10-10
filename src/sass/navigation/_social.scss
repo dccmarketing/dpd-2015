@@ -1,0 +1,31 @@
+.nav-social {
+	background-color: $med;
+	text-align 		: center;
+
+	@media only screen and (min-width: $bp__laptop) {
+		flex: 1 1 auto;
+	}
+
+	.screen-reader-text,
+	a {
+		@extend %hidetext;
+	}
+
+	.menu-items {
+		@extend %listreset;
+	}
+
+	.menu-item {
+		display 	: inline-block;
+		line-height : 1.5;
+		margin 		: 0 0.5em;
+		position 	: relative;
+
+		svg {
+			fill 		: $light;
+			height 		: $font__size-social;
+			margin-top 	: 5px;
+			width 		: $font__size-social;
+		}
+	}
+}

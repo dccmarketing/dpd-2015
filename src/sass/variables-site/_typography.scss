@@ -1,0 +1,17 @@
+@font-face {
+	font-family : 'fontello';
+	src 		: url('assets/fonts/fontello.eot?47129516');
+	src 		: url('assets/fonts/fontello.eot?47129516#iefix') format('embedded-opentype'),
+				url('assets/fonts/fontello.woff?47129516') format('woff'),
+				url('assets/fonts/fontello.ttf?47129516') format('truetype'),
+				url('assets/fonts/fontello.svg?47129516#fontello') format('svg');
+	font-weight : normal;
+	font-style 	: normal;
+}
+
+$font__main 				: Lato, sans-serif;
+$font__code 				: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+$font__pre 					: "Courier 10 Pitch", Courier, monospace;
+$font__line-height-body 	: 1.5;
+$font__line-height-pre 		: 1.6;
+$font__size-social 			: 36px;

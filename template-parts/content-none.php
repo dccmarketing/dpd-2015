@@ -2,7 +2,7 @@
 /**
  * Template part for displaying a message that posts cannot be found.
  *
- * @link https://codex.wordpress.org/Template_Hierarchy
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package DPD_2015
  */
@@ -11,12 +11,10 @@
 
 	/**
 	 * The tha_entry_top action hook
+	 *
+	 * @hooked 		none_found_title
 	 */
 	do_action( 'tha_entry_top' );
-
-	?><header class="page-header contentnone">
-		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'dpd-2015' ); ?></h1>
-	</header><!-- .page-header --><?php
 
 	/**
 	 * The tha_entry_content_before action hook

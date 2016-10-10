@@ -1,0 +1,53 @@
+.email-form {
+	margin		: 0;
+	padding 	: 1em;
+	text-align 	: center;
+	width 		: 100%;
+
+	@media only screen and (min-width: $bp__menu-button-side) {
+		width: 50%;
+	}
+
+	@media only screen and (min-width: $bp__laptop) {
+		padding-right: 0;
+	}
+
+	.gfield {
+		display: inline-block;
+	}
+
+	.cc_email_address {
+		label {
+			display: none;
+		}
+	}
+
+	input[type="submit"] {
+		@extend %buttonreset;
+		padding: 0.5em 1em;
+
+		@media only screen and (min-width: $bp__tablet) {
+			display: none;
+		}
+	}
+
+	input[type="text"] {
+		border-radius: 0;
+	}
+
+	.email-subscription-label {
+		margin-right: 0.5em;
+	}
+
+	.kws_form {
+		display: inline-block;
+	}
+
+	.cc_safesubscribe {
+		display: none;
+	}
+
+	.cc-header {
+		display: inline-block;
+	}
+}

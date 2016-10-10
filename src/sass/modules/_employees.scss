@@ -1,0 +1,33 @@
+.employee-list-wrap {
+	.list-employees {
+		@extend %listreset;
+
+		.employee {
+			border-bottom 	: 1px solid $dkgray;
+			display 		: flex;
+			flex-wrap 		: wrap;
+		}
+
+		.employee-list-thumb {
+			background-size : cover;
+			height 			: 250px;
+			width 			: 250px;
+
+			@media only screen and (max-width: $bp__quick-links - 1) {
+				margin: 0 auto;
+			}
+		}
+
+		.employee-content-container {
+			margin-left: 1em;
+		}
+
+		.employee-list-name {
+			margin-top: 0;
+		}
+
+		.employee-list-description {
+
+		}
+	}
+}

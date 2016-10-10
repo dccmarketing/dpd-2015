@@ -1,0 +1,36 @@
+.widget-area {
+	overflow 	: auto;
+	padding 	: 1em;
+	width 		: 100%;
+
+	@media only screen and (min-width: $bp__tablet) {
+		order 	: 2;
+		width 	: 27.5%;
+
+		&.sidebar-content {
+			margin 	: 0 0 0 2.5%;
+			order 	: 1;
+		}
+	}
+}
+
+.widget {
+	margin: 0 0 1.5em;
+
+	/* Make sure select elements fit in widgets */
+	select {
+		max-width: 100%;
+	}
+}
+
+/* Search widget */
+.widget_search {
+
+	.search-submit {
+		display: none;
+	}
+
+	.search-field {
+		width: 98.5%;
+	}
+}

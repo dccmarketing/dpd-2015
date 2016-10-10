@@ -109,10 +109,12 @@ do_action( 'tha_body_top' );
 
 			/**
 			 * The tha_content_top action hook
+			 *
+			 * @hooked 		content_top_bg 			10
+			 * @hooked 		program_links 			12
+			 * @hooked 		content_top_wrap 		15
 			 */
 			do_action( 'tha_content_top' );
-
-			?><div class="wrap wrap-content"><?php
 
 				/**
 				 * The dpd_2015_wrap_content action hook

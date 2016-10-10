@@ -19,16 +19,10 @@ get_header();
 
 		if ( have_posts() ) :
 
-			if ( is_home() && ! is_front_page() ) {
-
-				?><header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header><?php
-
-			}
-
 			/**
 			 * The tha_content_while_before action hook
+			 *
+			 * @hooked 			index_page_title
 			 */
 			do_action( 'tha_content_while_before' );
 
@@ -45,12 +39,10 @@ get_header();
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 				 */
-				get_template_part( 'template-parts/content', get_post_format() );
+				get_template_part( 'template-parts/content', 'excerpt' );
 
 				/**
 				 * The tha_entry_after action hook
-				 *
-				 * @hooked 		comments_section 		10
 				 */
 				do_action( 'tha_entry_after' );
 
@@ -60,8 +52,6 @@ get_header();
 			 * The tha_content_while_after action hook
 			 */
 			do_action( 'tha_content_while_after' );
-
-			the_posts_navigation();
 
 		else :
 
@@ -74,8 +64,6 @@ get_header();
 
 			/**
 			 * The tha_entry_after action hook
-			 *
-			 * @hooked 		comments_section 		10
 			 */
 			do_action( 'tha_entry_after' );
 
@@ -84,5 +72,4 @@ get_header();
 		?></main><!-- #main -->
 	</div><!-- #primary --><?php
 
-get_sidebar();
 get_footer();

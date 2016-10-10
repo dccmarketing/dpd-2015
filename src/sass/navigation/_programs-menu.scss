@@ -1,0 +1,158 @@
+.programs-menu,
+.nav-programs ul {
+	@extend %listreset;
+	display 		: flex;
+	line-height 	: 1;
+	margin 			: 0 auto;
+	max-width 		: 1000px;
+	width 			: 100%;
+
+	@media only screen and (max-width: $bp__headings2 - 1) {
+		flex-wrap: wrap;
+	}
+
+	@media only screen and (min-width: $bp__headings2) {
+		padding: 0 2% 1em;
+	}
+
+	li {
+		align-items 		: stretch;
+		background-position : center center;
+		background-repeat 	: no-repeat;
+		background-size 	: cover;
+		display 			: flex;
+		flex-wrap 			: wrap;
+		transition 			: $trans__default;
+		width 				: 100%;
+
+		&:not(:last-child) {
+			border-bottom: 1px solid $light;
+		}
+
+		/* &.gray{
+			filter 			: grayscale( 100% );
+			transition 		: $trans__default;
+
+			&:hover {
+				filter: grayscale( 0% );
+			}
+		}
+
+		&.disc {
+
+			&:hover {
+				background-image: none;
+				background-color: $dkgray;
+			}
+		} */
+
+		@media only screen and (min-width: $bp__home-buttons) and (max-width: $bp__headings2 - 1) {
+			width: 50%;
+
+			&:nth-child(odd):not(:last-child) {
+				border-right: 1px solid $light;
+			}
+
+			&.scovill-zoo {
+				width: 100%;
+
+				a {
+					justify-content : center;
+					padding-left 	: 0;
+				}
+			}
+		}
+
+		@media only screen and (min-width: $bp__headings2) {
+			border-bottom 	: 0 !important;
+			text-align 		: center;
+			width 			: percentage( 100 / 7 ) / 100;
+
+			&:not(:last-child) {
+				margin-right: 0.5%;
+			}
+
+			&:not(:first-child) {
+				margin-left: 0.5%;
+			}
+		}
+
+		svg {
+			fill		: $light;
+			height 		: $size__programs-icons;
+			margin 		: 0.25em;
+			transition 	: $trans__default;
+			width 		: $size__programs-icons;
+
+			@media only screen and (max-width: $bp__headings2 - 1) {
+				margin-right: 1em;
+			}
+
+			@media only screen and (min-width: $bp__headings2) {
+				display 	: block;
+				//margin-right 		: 0.25em;
+			}
+		}
+
+		a {
+			align-items 		: center;
+			display 			: flex;
+			padding 			: 1em 1%;
+			padding-left 		: 7.5%;
+			text-decoration 	: none;
+			transition 			: $trans__default;
+			width 				: 100%;
+
+			@media only screen and (min-width: $bp__home-buttons) and (max-width: $bp__headings2 - 1) {
+				padding-left: 5%;
+			}
+
+			@media only screen and (min-width: $bp__headings2) {
+				flex-wrap 		: wrap;
+				justify-content : center;
+				padding-left	: 1%;
+			}
+		}
+	}
+
+	.menu-label {
+		color 			: $light;
+		text-transform	: uppercase;
+
+		@media only screen and (min-width: $bp__headings2) {
+			display 		: block;
+			margin-bottom 	: 1em;
+			width 			: 100%;
+		}
+	}
+
+
+
+	.airport {
+
+	}
+
+	.banquets {
+
+	}
+
+	.disc {
+
+	}
+
+	.golf {
+
+	}
+
+	.lakeshore-landing {
+
+	}
+
+	.parks-foundation {
+
+	}
+
+	.scovill-zoo {
+
+	}
+}

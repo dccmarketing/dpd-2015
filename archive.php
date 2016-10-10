@@ -14,15 +14,10 @@ get_header(); ?>
 
 		if ( have_posts() ) :
 
-			?><header class="page-header"><?php
-
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				the_archive_description( '<div class="taxonomy-description">', '</div>' );
-
-			?></header><!-- .page-header --><?php
-
 			/**
 			 * The tha_content_while_before action hook
+			 *
+			 * @hooked 		archive_page_title
 			 */
 			do_action( 'tha_content_while_before' );
 
@@ -43,8 +38,6 @@ get_header(); ?>
 
 				/**
 				 * The tha_entry_after action hook
-				 *
-				 * @hooked 		comments_section 		10
 				 */
 				do_action( 'tha_entry_after' );
 
@@ -54,8 +47,6 @@ get_header(); ?>
 			 * The tha_content_while_after action hook
 			 */
 			do_action( 'tha_content_while_after' );
-
-			the_posts_navigation();
 
 		else :
 
@@ -68,8 +59,6 @@ get_header(); ?>
 
 			/**
 			 * The tha_entry_after action hook
-			 *
-			 * @hooked 		comments_section 		10
 			 */
 			do_action( 'tha_entry_after' );
 
@@ -78,5 +67,4 @@ get_header(); ?>
 		?></main><!-- .site-main -->
 	</div><!-- .content-area --><?php
 
-get_sidebar();
 get_footer();

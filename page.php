@@ -34,7 +34,8 @@ get_header(); ?>
 				/**
 				 * The tha_entry_after action hook
 				 *
-				 * @hooked 		comments_section 		10
+				 * @hooked 		posts_nav 				10
+				 * @hooked 		comments_section 		20
 				 */
 				do_action( 'tha_entry_after' );
 
@@ -48,5 +49,4 @@ get_header(); ?>
 		?></main><!-- #main -->
 	</div><!-- #primary --><?php
 
-get_sidebar();
 get_footer();

@@ -1,0 +1,41 @@
+.soliloquy-container {
+	margin-bottom: 0 !important;
+
+	.soliloquy-caption {
+		bottom 		: 3em !important;
+		left 		: 0;
+		margin 		: 0 auto;
+		max-width 	: $size__max-width;
+		right 		: 0;
+
+		.soliloquy-caption-inside {
+			background 	: transparent !important;
+			font-size 	: 2em !important;
+			font-style 	: italic !important;
+			line-height : 1 !important;
+			text-align 	: right !important;
+			text-shadow : 2px 2px 5px $dkgray !important;
+
+			@media only screen and (min-width: $bp__tablet) {
+				font-size 	: 3em !important;
+				font-weight : 700 !important;
+			}
+
+			@media only screen and (min-width: $bp__headings2) {
+				font-size 	: 4em !important;
+			}
+		}
+	}
+}
+
+.soliloquy-pager-link {
+	background 		: $light !important;
+	border 			: 2px solid $light !important;
+	border-radius 	: 50%;
+	height 			: 16px !important;
+	width 			: 16px !important;
+
+	&.active {
+		background: $dkgray !important;
+	}
+}

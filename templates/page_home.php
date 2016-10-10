@@ -26,12 +26,18 @@ get_header(); ?>
 				 */
 				do_action( 'tha_entry_before' );
 
-				get_template_part( 'template-parts/content', 'page' );
+				/**
+				 * The home_content action hook
+				 *
+				 * @hooked 		home_events						10
+				 * @hooked 		home_news 						15
+				 * @hooked 		site_info_and_copyright 		20
+				 * @hooked 		menu_quick_links 				25
+				 */
+				do_action( 'dpd_2015_home_content' );
 
 				/**
 				 * The tha_entry_after action hook
-				 *
-				 * @hooked 		comments_section 		10
 				 */
 				do_action( 'tha_entry_after' );
 
@@ -45,5 +51,4 @@ get_header(); ?>
 		?></main><!-- #main -->
 	</div><!-- #primary --><?php
 
-get_sidebar();
 get_footer();
