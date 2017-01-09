@@ -5,15 +5,13 @@
 @import "primary/asides";
 @import "primary/comments";
 @import "primary/entry-meta";
-@import "primary/home";
 @import "primary/posts-and-pages";
 @import "primary/archives";
 @import "primary/biketrails";
 
-@import "secondary/widgets";
+@import "home/home";
+@import "home/footer";
+@import "home/news";
+@import "home/events";
 
-.wrap {
-	max-width 	: $size__max-width;
-	margin 		: 0 auto;
-	padding 	: 1em 2%;
-}
+@import "secondary/widgets";

@@ -1,0 +1,41 @@
+.home {
+
+	.site-main {
+		border-top 	: 1px solid $med;
+		display 	: flex;
+		flex-wrap 	: wrap;
+
+		a {
+			@include unline( $dkgray );
+			font-weight: 700;
+		}
+
+		section {
+			width: 100%;
+
+			@media only screen and (min-width: $bp__quick-links) {
+				&.site-info,
+				&.quick-links-section {
+					width: 47.5%;
+
+					&:nth-child(odd) {
+						margin-right: 5%;
+					}
+				}
+			}
+
+			@media only screen and (min-width: $bp__tablet) {
+				width: 47.5%;
+
+				&:nth-child(odd) {
+					margin-right: 5%;
+				}
+			}
+
+			h2 {
+				text-transform: uppercase;
+			}
+		}
+	}
+
+}

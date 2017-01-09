@@ -469,7 +469,9 @@ class dpd_2015_Actions_and_Filters {
 
 		if ( ! is_front_page() ) { return; }
 
-		if ( is_multisite() && ! is_main_site() ) {
+		$blogID = get_current_blog_id();
+
+		if ( 1 !== $blogID ) {
 
 			switch_to_blog(1);
 
@@ -488,6 +490,14 @@ class dpd_2015_Actions_and_Filters {
 			if ( empty( $bgID ) && ! is_int( $bgID ) ) { continue; }
 
 			$imgURL = wp_get_attachment_url( $bgID );
+
+			if ( ! is_local_attachment( $imgURL ) ) {
+
+				switch_to_blog(1);
+
+				$imgURL = wp_get_attachment_url( $bgID );
+
+			}
 
 			echo '.nav-programs li.' . $menu_item->classes[1] . '{background-image:url(' . esc_url( $imgURL ) . ');}';
 

@@ -19,7 +19,7 @@
 		transform: translateY( calc( -100% ) );
 	}
 
-	@media only screen and (min-width: $bp__laptop) {
+	@media only screen and (min-width: $bp__laptop + 1) {
 		position 	: fixed;
 		transform 	: translateY(0);
 	}
@@ -31,7 +31,7 @@
 	.wrap {
 		padding: 0;
 
-		@media only screen and (min-width: $bp__laptop) {
+		@media only screen and (min-width: $bp__laptop + 1) {
 			display 		: flex;
 			justify-content : space-between;
 			padding 		: 0 2%;
@@ -52,7 +52,7 @@
 			width 		: 25%;
 		}
 
-		@media only screen and (min-width: $bp__laptop) {
+		@media only screen and (min-width: $bp__laptop + 1) {
 			display: none;
 		}
 	}

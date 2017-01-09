@@ -11,6 +11,13 @@
 	margin-right 	: auto;
 }
 
+// Center block
+@mixin center-block() {
+	display 		: block;
+	margin-left 	: auto;
+	margin-right 	: auto;
+}
+
 // Clearfix
 %clearfix {
 	content 	: "";

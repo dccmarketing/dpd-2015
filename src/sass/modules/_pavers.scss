@@ -1,0 +1,57 @@
+.preview-brick {
+	align-content		: center;
+	background-position	: center center;
+	background-repeat	: no-repeat;
+	background-size 	: contain;
+	display				: flex;
+	flex-wrap			: wrap;
+	justify-content		: center;
+}
+
+.brick4x8 {
+	background-image	: url( '/decatur-parks-foundation/wp-content/uploads/sites/4/2016/12/small-brick.png' );
+	height 				: 200px;
+}
+
+.brick8x8 {
+	background-image	: url( '/decatur-parks-foundation/wp-content/uploads/sites/4/2016/12/medium-brick.png' );
+	height 				: 250px;
+}
+
+.brick12x12 {
+	background-image	: url( '/decatur-parks-foundation/wp-content/uploads/sites/4/2016/12/large-brick.png' );
+	height 				: 300px;
+}
+
+.brick-text {
+	color 			: $light;
+	font-size 		: 1.75em;
+	font-weight 	: 700;
+	margin 			: 0;
+	overflow 		: hidden;
+	text-align		: center;
+	text-overflow 	: ellipsis;
+	text-transform	: uppercase;
+	white-space 	: nowrap;
+	width 			: 100%;
+	
+	&:empty {
+		display: none;
+	}
+}
+
+.brick-text-1 {
+	
+}
+
+.brick-text-2 {
+	
+}
+
+.brick-text-3 {
+	
+}
+
+.brick-text-4 {
+	
+}

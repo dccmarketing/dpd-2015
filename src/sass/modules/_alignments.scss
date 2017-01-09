@@ -1,15 +1,25 @@
 .alignleft {
-	display: inline;
-	float: left;
-	margin-right: 1.5em;
+	display 	: block;
+	max-width 	: 50%;
+	
+	@media only screen and (min-width: $bp__home-buttons + 1) {
+		display 	: inline;
+		float 		: left;
+		margin-right: 1.5em;
+	}
 }
 
 .alignright {
-	display: inline;
-	float: right;
-	margin-left: 1.5em;
+	display 	: block;
+	max-width 	: 50%;
+	
+	@media only screen and (min-width: $bp__home-buttons + 1) {
+		display 	: inline;
+		float 		: right;
+		margin-left	: 1.5em;
+	}
 }
 
 .aligncenter {
-	@extend %center-block;
+	@include center-block();
 }

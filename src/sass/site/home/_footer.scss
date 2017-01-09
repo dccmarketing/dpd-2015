@@ -1,0 +1,52 @@
+.home {
+	.site-copyright {
+		a {
+			color 		: $dkgray;
+			font-weight : 400;
+		}
+
+		h2 {
+			color: transparent;
+		}
+
+		ul {
+			@extend %listreset;
+
+			@media only screen and (min-width: $bp__footer) {
+				display: flex;
+
+				li {
+
+					&:not(:first-child) {
+						padding-left: 0.5em;
+					}
+
+					&:not(:last-child) {
+						border-right	: 1px solid;
+						padding-right	: 0.5em
+					}
+
+					&.copyright {
+						display: block;
+					}
+				}
+			}
+		}
+
+		.footer-page-link {
+			color 			: $green;
+			font-weight 	: 700;
+			text-transform	: uppercase;
+		}
+
+		.credits {
+			font-size: 0.85em;
+		}
+
+	}
+
+	.dpd-news-link,
+	.dpd-events-link {
+		display: block;
+	}
+}

@@ -1,0 +1,90 @@
+a {
+	&[target="_blank"] {
+		position: relative;
+
+		&:hover:after {
+			content 	: "\f504";
+			font-family : 'dashicons';
+			position 	: absolute;
+			right 		: -1em;
+			top 		: -4px;
+		}
+	}
+
+	&[href] {
+		&:after {
+			display 		: inline-block;
+			font-family 	: 'fontello';
+			font-style 		: normal;
+			font-variant 	: normal;
+			font-weight 	: normal;
+			line-height 	: 1em;
+			margin-left 	: 0.25em;
+			speak 			: none;
+			text-align 		: center;
+			text-decoration : inherit;
+			text-transform 	: none;
+			width 			: 1em;
+		}
+	}
+
+	$files: 'pdf' '#FF0000' '\e801',
+
+			'doc' '#00188F' '\e802',
+			'docx' '#00188F' '\e802',
+
+			'xls' '#007233' '\e803',
+			'xlsx' '#007233' '\e803',
+
+			'ppt' '#dd5900' '\e804',
+			'pptx' '#dd5900' '\e804',
+
+			'txt' 'inherit' '\e80b',
+			'rtf' 'inherit' '\e80b',
+
+			'zip' 'inherit' '\e806',
+			'rar' 'inherit' '\e806',
+			'tar' 'inherit' '\e806',
+			'gz' 'inherit' '\e806',
+			'dmg' 'inherit' '\e806',
+			'tar.gz' 'inherit' '\e806',
+			'tgz' 'inherit' '\e806',
+			'zipx' 'inherit' '\e806',
+
+			'aac' 'inherit' '\e807',
+			'flac' 'inherit' '\e807',
+			'm4a' 'inherit' '\e807',
+			'm4p' 'inherit' '\e807',
+			'mp3' 'inherit' '\e807',
+			'ogg' 'inherit' '\e807',
+			'wav' 'inherit' '\e807',
+			'wma' 'inherit' '\e807',
+
+			'webm' 'inherit' '\e808',
+			'mov' 'inherit' '\e808',
+			'wmv' 'inherit' '\e808',
+			'mp4' 'inherit' '\e808',
+			'm4v' 'inherit' '\e808',
+			'mpg' 'inherit' '\e808',
+			'mp2' 'inherit' '\e808',
+			'mpeg' 'inherit' '\e808',
+
+			'ai' 'inherit' '\e805',
+			'eps' 'inherit' '\e805',
+			'psd' 'inherit' '\e805',
+			'svg' 'inherit' '\e805',
+			'swf' 'inherit' '\e805';
+
+	@each $file in $files {
+		&[href$=".#{nth($file, 1)}"] {
+
+			&:hover:after {
+				color: #{nth($file, 2)};
+			}
+
+			&:after {
+				content: "#{nth($file, 3)}";
+			}
+		}
+	}
+}

@@ -215,7 +215,7 @@ class dpd_2015_Menu_Image {
 
 				if ( ! empty( $thumbnail_id ) ) {
 
-					echo wp_get_attachment_image_src( $thumbnail_id, 'thumbnail' )[0];
+					echo esc_url( wp_get_attachment_image_src( $thumbnail_id, 'thumbnail' )[0] );
 
 				}
 

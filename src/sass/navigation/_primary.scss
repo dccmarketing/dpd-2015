@@ -7,12 +7,12 @@
 
 	.nav-menu {
 
-		@media only screen and (min-width: $bp__menu-button-side) and (max-width: $bp__laptop - 1) {
+		@media only screen and (min-width: $bp__menu-button-side) and (max-width: $bp__laptop) {
 			background-color: transparent !important;
 			color 			: $light;
 		}
 
-		@media only screen and (min-width: $bp__laptop) {
+		@media only screen and (min-width: $bp__laptop + 1) {
 			margin: 0 -3.25em;
 		}
 	}
@@ -22,9 +22,7 @@
 		display 	: none;
 		text-align 	: left;
 
-		@media only screen and (min-width: $bp__menu-button+1) {
-			//display 		: block;
-			//text-align 		: center;
+		@media only screen and (min-width: $bp__menu-button + 1) {
 			display 		: flex;
 			justify-content : center;
 		}
@@ -37,7 +35,7 @@
 				background-color: transparent;
 			}
 
-			@media only screen and (min-width: $bp__menu-button+1) {
+			@media only screen and (min-width: $bp__menu-button + 1) {
 				box-shadow	: 0 3px 3px rgba(0, 0, 0, 0.2);
 				left 		: 0;
 				opacity 	: 0;
@@ -49,7 +47,7 @@
 
 			ul {
 
-				@media only screen and (min-width: $bp__menu-button+1) {
+				@media only screen and (min-width: $bp__menu-button + 1) {
 					left: 100%;
 					top	: 0;
 				}
@@ -76,7 +74,7 @@
 			a {
 				padding: 0.5em 2em;
 
-				@media only screen and (min-width: $bp__menu-button+1) {
+				@media only screen and (min-width: $bp__menu-button + 1) {
 					color 			: $color__text-submenu;
 					justify-content : space-between;
 					padding 		: 0.5em 1em;
@@ -99,7 +97,7 @@
 				&.menu-item-has-children {
 					> a {
 						&:after {
-							@media only screen and (min-width: $bp__menu-button+1) {
+							@media only screen and (min-width: $bp__menu-button + 1) {
 								content 	: "\f345";
 								font-family : dashicons;
 								margin-left : 1em;
@@ -123,13 +121,16 @@
 					}
 
 					.show-hide {
-						color 		: $green;
 						cursor 		: pointer;
 						position 	: absolute;
 						right 		: 0;
 						text-align 	: center;
 						top 		: 0.5em;
 						width 		: 2em;
+						
+						@media only screen and (max-width: $bp__menu-button-side - 1) {
+							color: $green;
+						}
 
 						@media only screen and (min-width: $bp__menu-button-side) {
 							color 		: $light;
@@ -138,7 +139,7 @@
 				}
 			}
 
-			@media only screen and (min-width: $bp__menu-button+1) {
+			@media only screen and (min-width: $bp__menu-button + 1) {
 				.show-hide {
 					display: none;
 				}
@@ -149,8 +150,7 @@
 
 	li {
 
-		@media only screen and (min-width: $bp__menu-button+1) {
-			//display 	: inline-block;
+		@media only screen and (min-width: $bp__menu-button + 1) {
 			flex-grow 	: 1;
 			position 	: relative;
 		}
@@ -160,7 +160,7 @@
 
 			> .wrap-submenu,
 			> .wrap-submenu > ul {
-				@media only screen and (min-width: $bp__menu-button+1) {
+				@media only screen and (min-width: $bp__menu-button + 1) {
 					opacity 	: 1;
 					visibility 	: visible;
 				}
@@ -171,17 +171,11 @@
 					font-weight: 700;
 				}
 
-				@media only screen and (min-width: $bp__menu-button+1) {
+				@media only screen and (min-width: $bp__menu-button + 1) {
 					color: $color__text-menu-hover;
 				}
 			}
 
-			> .show-hide {
-
-				@media only screen and (min-width: $bp__menu-button-side) {
-					//color: $green !important;
-				}
-			}
 		}
 
 		&.open {
@@ -207,7 +201,7 @@
 			color 			: $light;
 		}
 
-		@media only screen and (min-width: $bp__menu-button+1) {
+		@media only screen and (min-width: $bp__menu-button + 1) {
 			align-items 	: center;
 			color 			: $color__text-menu;
 			display 		: flex;
@@ -253,14 +247,11 @@
 
 		}
 
-		/* .menu-toggle {
-			right: $size__menu_width;
-		} */
 	}
 
 	.facilities-and-rentals {
 
-		@media only screen and (min-width: $bp__menu-button+1) {
+		@media only screen and (min-width: $bp__menu-button + 1) {
 			position: static;
 
 			.sub-menu {
@@ -291,7 +282,7 @@
 	max-width 	: $size__max-width;
 	position 	: relative;
 
-	@media only screen and (min-width: $bp__menu-button+1) {
+	@media only screen and (min-width: $bp__menu-button + 1) {
 		padding 	: 0 2%;
 
 		> ul {
@@ -308,15 +299,6 @@
 					}
 				}
 
-				/* Removes padding to make these menu items as close to the edge as possible
-
-				&:first-child a {
-					padding-left: 0;
-				}
-
-				&:last-child a {
-					padding-right: 0;
-				} */
 			}
 		}
 	}
@@ -361,10 +343,8 @@
 
 	@media only screen and (min-width: $bp__menu-button-side) and (max-width: $bp__laptop) {
 		background-color: $color__bg-menu-button;
-		//bottom 			: 1em;
 		color 			: $color__text-menu-button;
 		position 		: absolute;
-		//right 			: calc( 2% + 1em );
 		right 			: 0;
 		top 			: 0;
 		width 			: 25%;
@@ -382,7 +362,7 @@
 		}
 	}
 
-	@media only screen and (min-width: $bp__menu-button+1) {
+	@media only screen and (min-width: $bp__menu-button + 1) {
 		display 		: none;
 	}
 }
