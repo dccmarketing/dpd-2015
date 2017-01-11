@@ -35,7 +35,7 @@ class dpd_2015_Menukit {
 		add_filter( 'walker_nav_menu_start_el', array( $this, 'search_icon_only' ), 10, 4 );
 		add_shortcode( 'listmenu', array( $this, 'list_menu' ) );
 		add_filter( 'wp_setup_nav_menu_item', array( $this, 'add_menu_title_as_class' ), 10, 1 );
-		//add_filter( 'nav_menu_css_class', array( $this, 'add_gray_to_programs_menu_items' ), 10, 4 );
+		add_filter( 'nav_menu_css_class', array( $this, 'add_gray_to_programs_menu_items' ), 10, 4 );
 
 	} // loader()
 
@@ -80,10 +80,14 @@ class dpd_2015_Menukit {
 
 		$title = sanitize_title( $menu_item->title );
 
-		if ( ! in_array( $title, $menu_item->classes ) ) {
+		if ( empty( $menu_item->classes ) || ! is_array( $menu_item->classes ) ) {
 
+			$menu_item->classes[0] = $title;
+
+		} elseif ( ! in_array( $title, $menu_item->classes ) ) {
+			
 			$menu_item->classes[] = $title;
-
+			
 		}
 
 		return $menu_item;
